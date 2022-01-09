@@ -1,33 +1,47 @@
 {
   "name": "codefirst-ngx-starter",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~13.1.0",
-    "@angular/common": "~13.1.0",
-    "@angular/compiler": "~13.1.0",
-    "@angular/core": "~13.1.0",
-    "@angular/forms": "~13.1.0",
-    "@angular/platform-browser": "~13.1.0",
-    "@angular/platform-browser-dynamic": "~13.1.0",
-    "@angular/router": "~13.1.0",
-    "rxjs": "~7.4.0",
-    "tslib": "^2.3.0",
+    "@angular/animations": "13.0.0",
+    "@angular/common": "13.0.0",
+    "@angular/compiler": "13.0.0",
+    "@angular/core": "13.0.0",
+    "@angular/forms": "13.0.0",
+    "@angular/platform-browser": "13.0.0",
+    "@angular/platform-browser-dynamic": "13.0.0",
+    "@angular/router": "13.0.0",
+    "rxjs": "~7.5.1",
+    "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.1.2",
-    "@angular/cli": "~13.1.2",
-    "@angular/compiler-cli": "~13.1.0",
+    "@angular-devkit/build-angular": "13.0.0",
+    "@angular/cli": "13.0.0",
+    "@angular/compiler-cli": "13.0.0",
+    "@angular/elements": "13.0.0",
+    "@babel/core": "^7.16.7",
+    "@compodoc/compodoc": "^1.1.16",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/angular": "^6.4.9",
+    "@storybook/builder-webpack5": "^6.4.9",
+    "@storybook/manager-webpack5": "^6.4.9",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "@webcomponents/custom-elements": "^1.5.0",
+    "babel-loader": "^8.2.3",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -35,5 +49,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
+  },
+  "overrides": {
+    "colors": "1.4.0"
   }
 }
