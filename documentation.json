@@ -73,7 +73,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-1837078bb4d7dafee34022a51a9c27af4ce3a3e105f82e974519c1a74fdbb1c682e224508356de05630b355fd48648239d0cefaf59b928a5adcd7159ed0ca77e",
+            "id": "component-ButtonComponent-ec9733506771e09c3b2f0b2352fff20112d1c9cc27ae218835b096011bd04de9d4f9c7dabcffa604d379e10a8bb213eeec5cdd8b2a032a21d7da1ddd29039a2b",
             "file": "src/app/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -119,15 +119,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 745,
-                            "end": 758,
+                            "pos": 712,
+                            "end": 725,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 746,
-                                "end": 754,
+                                "pos": 713,
+                                "end": 721,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -148,8 +148,8 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nIs this the principal call to action on the page?\n",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "rawdescription": "\n\nWhat is the button mode?\n",
+                    "description": "<p>What is the button mode?</p>\n",
                     "line": 14,
                     "type": "\"primary\" | \"secondary\" | \"danger\" | \"warning\"",
                     "decorators": []
@@ -187,7 +187,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-white hover:bg-gray-200 text-black text-center py-2 px-4 rounded',\n      secondary: 'bg-transparent hover:bg-white border border-bg-white text-white hover:text-black text-center py-2 px-4 rounded',\n      danger: 'bg-red-500 hover:bg-red-700 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-white hover:bg-gray-200 text-black text-center py-2 px-4 rounded',\n      secondary: 'bg-transparent hover:bg-white border border-bg-white text-white hover:text-black text-center py-2 px-4 rounded',\n      danger: 'bg-red-500 hover:bg-red-700 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -477,13 +477,13 @@
         },
         {
             "name": "ButtonComponentModule",
-            "id": "module-ButtonComponentModule-1837078bb4d7dafee34022a51a9c27af4ce3a3e105f82e974519c1a74fdbb1c682e224508356de05630b355fd48648239d0cefaf59b928a5adcd7159ed0ca77e",
+            "id": "module-ButtonComponentModule-ec9733506771e09c3b2f0b2352fff20112d1c9cc27ae218835b096011bd04de9d4f9c7dabcffa604d379e10a8bb213eeec5cdd8b2a032a21d7da1ddd29039a2b",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/button/button.component.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-white hover:bg-gray-200 text-black text-center py-2 px-4 rounded',\n      secondary: 'bg-transparent hover:bg-white border border-bg-white text-white hover:text-black text-center py-2 px-4 rounded',\n      danger: 'bg-red-500 hover:bg-red-700 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-white hover:bg-gray-200 text-black text-center py-2 px-4 rounded',\n      secondary: 'bg-transparent hover:bg-white border border-bg-white text-white hover:text-black text-center py-2 px-4 rounded',\n      danger: 'bg-red-500 hover:bg-red-700 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -610,21 +610,21 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  production: false\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.prod.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
             },
             {
                 "name": "increment",
@@ -911,18 +911,6 @@
                     "defaultValue": "createAction('[Counter Component] Reset')"
                 }
             ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -933,6 +921,18 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
                 }
             ],
             "src/stories/Header.stories.ts": [
