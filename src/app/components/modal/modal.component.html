@@ -1,0 +1,36 @@
+<div class="modal-mask">
+  <div class="modal-outside-mask"></div>
+  <div class="modal-wrapper">
+    <div class="modal-container" [ngStyle]="{'width': width}">
+      <section class="modal-header">
+        <p>{{ title }}</p>
+        <div class="modal-close-icon" (click)="close.emit($event)"></div>
+      </section>
+
+      <div class="modal-body">
+
+        <ng-container *ngIf="!bodyTemplate">
+          <ng-content></ng-content>
+        </ng-container>
+
+        <ng-container *ngIf="bodyTemplate">
+          <div *nzStringTemplateOutlet="bodyTemplate">{{ bodyTemplate }}</div>
+        </ng-container>
+      </div>
+
+      <div class="modal-footer">
+        <immino-button
+          label="Cancel"
+          [mode]="ButtonMode.Primary"
+          (onClick)="cancel.emit($event)"
+        ></immino-button>
+
+        <immino-button
+          label="OK"
+          [mode]="ButtonMode.Secondary"
+          (onClick)="ok.emit($event)"
+        ></immino-button>
+      </div>
+    </div>
+  </div>
+</div>

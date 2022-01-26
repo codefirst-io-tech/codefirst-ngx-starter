@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { counterReducer } from './components/counter/counter.reducer';
 import { CounterComponentModule } from './components/counter/counter.component';
+import { ModalComponentModule } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CounterComponentModule } from './components/counter/counter.component';
     ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     CounterComponentModule,
+    ModalComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
