@@ -13,8 +13,7 @@
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
-    "push": "git push --follow-tags",
-    "chromatic": "npx chromatic --project-token=2792a89910ac"
+    "push": "git push --follow-tags"
   },
   "private": true,
   "dependencies": {
