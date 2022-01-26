@@ -2,6 +2,65 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "ModalRef",
+            "id": "interface-ModalRef-e9c5a4000c4066423b1b20d7d01f22dabdab5881979f48822ace34d5efc09247f21c980d4c72b9a34ac38573382ed42bdd0250a573ea6ffc2f842fd5ef5e9be5",
+            "file": "src/app/components/modal/modal.service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\nexport function generateUUID() {\n  // Public Domain/MIT\n  let d = new Date().getTime(); //Timestamp\n  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    let r = Math.random() * 16; //random number between 0 and 16\n    if (d > 0) {\n      //Use timestamp until depleted\n      r = (d + r) % 16 | 0;\n      d = Math.floor(d / 16);\n    } else {\n      //Use microseconds since page-load if supported\n      r = (d2 + r) % 16 | 0;\n      d2 = Math.floor(d2 / 16);\n    }\n    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);\n  });\n}\n\nexport interface ModalRef {\n  id: string;\n  onOk?: any,\n  onCancel?: any,\n  onClose?: any,\n  status?: 'SHOW' | 'HIDE';\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class ModalService {\n  show(component: any, config?: any): ModalRef {\n    const modalRef: ModalRef = {\n      id: generateUUID(),\n      status: 'SHOW',\n      onOk: new BehaviorSubject(null),\n    };\n\n    return modalRef;\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "onCancel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "onClose",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "onOk",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "status",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"SHOW\" | \"HIDE\"",
+                    "optional": true,
+                    "description": "",
+                    "line": 28
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "User",
             "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
             "file": "src/stories/User.ts",
@@ -14,7 +73,67 @@
             "methods": []
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "ModalService",
+            "id": "injectable-ModalService-e9c5a4000c4066423b1b20d7d01f22dabdab5881979f48822ace34d5efc09247f21c980d4c72b9a34ac38573382ed42bdd0250a573ea6ffc2f842fd5ef5e9be5",
+            "file": "src/app/components/modal/modal.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "show",
+                    "args": [
+                        {
+                            "name": "component",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "config",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ModalRef",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "component",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "config",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\nexport function generateUUID() {\n  // Public Domain/MIT\n  let d = new Date().getTime(); //Timestamp\n  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    let r = Math.random() * 16; //random number between 0 and 16\n    if (d > 0) {\n      //Use timestamp until depleted\n      r = (d + r) % 16 | 0;\n      d = Math.floor(d / 16);\n    } else {\n      //Use microseconds since page-load if supported\n      r = (d2 + r) % 16 | 0;\n      d2 = Math.floor(d2 / 16);\n    }\n    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);\n  });\n}\n\nexport interface ModalRef {\n  id: string;\n  onOk?: any,\n  onCancel?: any,\n  onClose?: any,\n  status?: 'SHOW' | 'HIDE';\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class ModalService {\n  show(component: any, config?: any): ModalRef {\n    const modalRef: ModalRef = {\n      id: generateUUID(),\n      status: 'SHOW',\n      onOk: new BehaviorSubject(null),\n    };\n\n    return modalRef;\n  }\n}\n",
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [
@@ -265,7 +384,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-dd4d4bc81c2c7b1f41df2bca941734f5404b1a2270daa1925f3163670a068d94c14bf800e063c24160e3893744e9f353503752b12e2aa0795cccfa8bece2d4cc",
+            "id": "component-AppComponent-2e4853219422872bc9a152d42d8e07479b043a12e16981b4f4809587afc05aa52b4884d202819b979f716df4884f07ff39146e4dc15baab7a4c2a39a4383ceb9",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -292,10 +411,41 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 11
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "onCancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onOk",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "showModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -303,7 +453,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'codefirst-ngx-starter';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { ModalComponent } from './components/modal/modal.component';\nimport { ModalService } from './components/modal/modal.service';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'codefirst-ngx-starter';\n\n  constructor(private modalService: ModalService) {}\n\n  showModal() {\n    const modalRef = this.modalService.show(ModalComponent);\n\n    modalRef.onOk.subscribe(() => {\n      console.log('OK');\n    });\n  }\n\n  onCancel() {\n    console.log('cancel');\n  }\n\n  onOk() {\n    console.log('ok');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -312,11 +462,37 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<immino-modal\r\n  title=\"armut modal\"\r\n  width=\"500px\"\r\n  [bodyTemplate]=\"armut\"\r\n>\r\n</immino-modal>\r\n\r\n<ng-template #armut>\r\n  <p>armut modal</p>\r\n</ng-template>\r\n\r\n"
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "modalService",
+                        "type": "ModalService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "modalService",
+                        "type": "ModalService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<immino-modal\n  title=\"armut modal\"\n  width=\"500px\"\n  [bodyTemplate]=\"armut\"\n  (cancel)=\"onCancel()\"\n  (ok)=\"onOk()\"\n>\n</immino-modal>\n\n<ng-template #armut>\n  <p>armut modal</p>\n</ng-template>\n\n"
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-9f6fb1ca1753a8313ed0cecc38d2b6c7b61c04837865c6a02e8eea1623c2a7f26ba8432eb03f10f1115042e2702cfe0fcd09479f18e8dff88a9bb17c05146935",
+            "id": "component-ButtonComponent-2173e86f9f3d0a9215962c3bfb23f915b44b100cc8b9f693cf60e69bef568d10c68f44b7b918f08c456efbb551454d5b0fafa904ac61061e866d407b153fe00e",
             "file": "src/app/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -362,15 +538,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 746,
-                            "end": 760,
+                            "pos": 721,
+                            "end": 734,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 747,
-                                "end": 755,
+                                "pos": 722,
+                                "end": 730,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -430,7 +606,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'immino-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * What is the button mode?\r\n   */\r\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input() backgroundColor?: string;\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input() label = 'Button';\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output() onClick = new EventEmitter<Event>();\r\n  /**\r\n   * Is button disabled?\r\n   *\r\n   */\r\n  @Input() disabled = false;\r\n\r\n  // TODO: implement icon support with font-awesome\r\n  // @Input() icon: string = '';\r\n  // @Input() iconPosition: 'left' | 'right' = 'left';\r\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\r\n  // @Input() iconOnly = false;\r\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\r\n\r\n  public get classes(): string {\r\n    const classes = {\r\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\r\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\r\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\r\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n    }\r\n    return classes[this.mode];\r\n  }\r\n}\r\n\r\nexport enum ButtonMode {\r\n  Primary = 'primary',\r\n  Secondary = 'secondary',\r\n  Danger = 'danger',\r\n  Warning = 'warning',\r\n  Link = 'link'\r\n}\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule],\r\n  exports: [ButtonComponent]\r\n})\r\nexport class ButtonComponentModule {\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\nexport enum ButtonMode {\n  Primary = 'primary',\n  Secondary = 'secondary',\n  Danger = 'danger',\n  Warning = 'warning',\n  Link = 'link'\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -526,7 +702,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".btn {\r\n  @apply font-bold py-2 px-4 rounded;\r\n}\r\n.btn-blue {\r\n  @apply bg-blue-500 text-white;\r\n}\r\n.btn-blue:hover {\r\n  @apply bg-blue-700;\r\n}\r\n",
+                    "data": ".btn {\n  @apply font-bold py-2 px-4 rounded;\n}\n.btn-blue {\n  @apply bg-blue-500 text-white;\n}\n.btn-blue:hover {\n  @apply bg-blue-700;\n}\n",
                     "styleUrl": "./counter.component.scss"
                 }
             ],
@@ -634,7 +810,7 @@
         },
         {
             "name": "ModalComponent",
-            "id": "component-ModalComponent-5878daf414f9ea1ecdc976369f7098d3d6aa945d7c4eb7b59c430397fa0dd36bde96014335c95530cf51a8a50dc0db1a1819064cd49aa28f32b4c88a943c84aa",
+            "id": "component-ModalComponent-06f99bb51c048fb43fac916aaf43d13ed44edabec8a5890ad94aa5424e8edde01bce8832d9301d8865fd7f63f580a58fe8e3128324e3e578fd02b4f583c1904b",
             "file": "src/app/components/modal/modal.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -689,7 +865,7 @@
                 },
                 {
                     "name": "width",
-                    "defaultValue": "'50%'",
+                    "defaultValue": "'500px'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 17,
@@ -699,11 +875,19 @@
             ],
             "outputsClass": [
                 {
-                    "name": "close",
+                    "name": "cancel",
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 20,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "close",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
                     "type": "EventEmitter"
                 },
                 {
@@ -735,16 +919,16 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'immino-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '50%';\n  @Input() height = 'auto';\n\n  @Output() close = new EventEmitter();\n  @Output() ok = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [\n    ModalComponent\n  ],\n  imports: [\n    CommonModule,\n    ButtonComponentModule,\n    StringTemplateOutletDirectiveModule\n  ],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'immino-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '500px';\n  @Input() height = 'auto';\n\n  @Output() cancel = new EventEmitter();\n  @Output() ok = new EventEmitter();\n  @Output() close = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [\n    ModalComponent\n  ],\n  imports: [\n    CommonModule,\n    ButtonComponentModule,\n    StringTemplateOutletDirectiveModule\n  ],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".modal-mask {\r\n  position: fixed;\r\n  z-index: 9998;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgba(31, 31, 31, 0.6);\r\n  display: table;\r\n  transition: opacity 0.3s ease;\r\n}\r\n\r\n.modal-wrapper {\r\n  position: absolute;\r\n  z-index: 11;\r\n  width: auto;\r\n  height: auto;\r\n  transform: translate(-50%, -50%);\r\n  left: 50%;\r\n  top: 50%;\r\n}\r\n\r\n.modal-container {\r\n  height: auto;\r\n  border-radius: 6px;\r\n  margin: 0 auto;\r\n  padding: 24px 24px 20px 24px;\r\n  background-color: #fff;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\r\n  transition: all 0.3s ease;\r\n  z-index: 10;\r\n}\r\n\r\n.modal-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n\r\n  p {\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n    line-height: 1.3;\r\n    letter-spacing: -0.2px;\r\n    color: #1f1f1f;\r\n  }\r\n\r\n  .modal-close-icon {\r\n    background-image: url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h24v24H0z'/%3E%3Cpath stroke='%237A8085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m8 8 8 8-4-4 4-4-8 8'/%3E%3Cpath d='M16.38 6.214c.91-.754 2.16.496 1.406 1.406l-.079.087L13.415 12l4.292 4.293c.914.914-.388 2.272-1.327 1.493l-.087-.079L12 13.415l-4.293 4.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083L12 10.585l4.293-4.292.087-.08z' fill='%23707070'/%3E%3C/g%3E%3C/svg%3E%0A\");\r\n    cursor: pointer;\r\n    width: 24px;\r\n    height: 24px;\r\n  }\r\n}\r\n\r\n.modal-outside-mask {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: fixed;\r\n  z-index: 9;\r\n  top: 0;\r\n  left: 0;\r\n  background-color: transparent;\r\n  display: table;\r\n  transition: opacity 0.3s ease;\r\n  cursor: pointer;\r\n}\r\n\r\n.modal-body {\r\n  margin: 20px 0;\r\n}\r\n\r\n.modal-default-button {\r\n  float: right;\r\n}\r\n\r\n.modal-footer {\r\n  text-align: end;\r\n\r\n  .button {\r\n    width: fit-content;\r\n\r\n    &:last-of-type {\r\n      margin-left: 10px;\r\n    }\r\n  }\r\n}\r\n\r\n/*\r\n * The following styles are auto-applied to elements with\r\n * transition=\"modal\" when their visibility is toggled\r\n * by Vue.js.\r\n *\r\n * You can easily play with the modal transition by editing\r\n * these styles.\r\n */\r\n\r\n.modal-enter-from,\r\n.modal-leave-to {\r\n  opacity: 0;\r\n}\r\n\r\n.modal-enter-active .modal-container,\r\n.modal-leave-active .modal-container {\r\n  -webkit-transform: scale(1.1);\r\n  transform: scale(1.1);\r\n}\r\n",
+                    "data": ".modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(31, 31, 31, 0.6);\n  display: table;\n  transition: opacity 0.3s ease;\n}\n\n.modal-wrapper {\n  position: absolute;\n  z-index: 11;\n  width: auto;\n  height: auto;\n  transform: translate(-50%, -50%);\n  left: 50%;\n  top: 50%;\n}\n\n.modal-container {\n  height: auto;\n  border-radius: 6px;\n  margin: 0 auto;\n  padding: 24px 24px 20px 24px;\n  background-color: #fff;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n  transition: all 0.3s ease;\n  z-index: 10;\n}\n\n.modal-header {\n  display: flex;\n  justify-content: space-between;\n\n  p {\n    font-size: 20px;\n    font-weight: bold;\n    line-height: 1.3;\n    letter-spacing: -0.2px;\n    color: #1f1f1f;\n  }\n\n  .modal-close-icon {\n    background-image: url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h24v24H0z'/%3E%3Cpath stroke='%237A8085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m8 8 8 8-4-4 4-4-8 8'/%3E%3Cpath d='M16.38 6.214c.91-.754 2.16.496 1.406 1.406l-.079.087L13.415 12l4.292 4.293c.914.914-.388 2.272-1.327 1.493l-.087-.079L12 13.415l-4.293 4.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083L12 10.585l4.293-4.292.087-.08z' fill='%23707070'/%3E%3C/g%3E%3C/svg%3E%0A\");\n    cursor: pointer;\n    width: 24px;\n    height: 24px;\n  }\n}\n\n.modal-outside-mask {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  z-index: 9;\n  top: 0;\n  left: 0;\n  background-color: transparent;\n  display: table;\n  transition: opacity 0.3s ease;\n  cursor: pointer;\n}\n\n.modal-body {\n  margin: 20px 0;\n}\n\n.modal-default-button {\n  float: right;\n}\n\n.modal-footer {\n  text-align: end;\n\n  .button {\n    width: fit-content;\n\n    &:last-of-type {\n      margin-left: 10px;\n    }\n  }\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n\n.modal-enter-from,\n.modal-leave-to {\n  opacity: 0;\n}\n\n.modal-enter-active .modal-container,\n.modal-leave-active .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n",
                     "styleUrl": "./modal.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"modal-mask\">\n  <div class=\"modal-outside-mask\"></div>\n  <div class=\"modal-wrapper\">\n    <div class=\"modal-container\" [ngStyle]=\"{'width': width}\">\n      <section class=\"modal-header\">\n        <p>{{ title }}</p>\n        <div class=\"modal-close-icon\"></div>\n      </section>\n\n      <div class=\"modal-body\">\n\n        <ng-container *ngIf=\"!bodyTemplate\">\n          <ng-content></ng-content>\n        </ng-container>\n\n        <ng-container *ngIf=\"bodyTemplate\">\n          <div *nzStringTemplateOutlet=\"bodyTemplate\">{{ bodyTemplate }}</div>\n        </ng-container>\n\n      </div>\n\n      <div class=\"modal-footer\">\n        <immino-button\n          label=\"Cancel\"\n          [mode]=\"ButtonMode.Link\"\n          (onClick)=\"close.emit($event)\"\n        ></immino-button>\n\n        <immino-button\n          label=\"OK\"\n          [mode]=\"ButtonMode.Secondary\"\n          (onClick)=\"ok.emit($event)\"\n        ></immino-button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"modal-mask\">\n  <div class=\"modal-outside-mask\"></div>\n  <div class=\"modal-wrapper\">\n    <div class=\"modal-container\" [ngStyle]=\"{'width': width}\">\n      <section class=\"modal-header\">\n        <p>{{ title }}</p>\n        <div class=\"modal-close-icon\" (click)=\"close.emit($event)\"></div>\n      </section>\n\n      <div class=\"modal-body\">\n\n        <ng-container *ngIf=\"!bodyTemplate\">\n          <ng-content></ng-content>\n        </ng-container>\n\n        <ng-container *ngIf=\"bodyTemplate\">\n          <div *nzStringTemplateOutlet=\"bodyTemplate\">{{ bodyTemplate }}</div>\n        </ng-container>\n      </div>\n\n      <div class=\"modal-footer\">\n        <immino-button\n          label=\"Cancel\"\n          [mode]=\"ButtonMode.Primary\"\n          (onClick)=\"cancel.emit($event)\"\n        ></immino-button>\n\n        <immino-button\n          label=\"OK\"\n          [mode]=\"ButtonMode.Secondary\"\n          (onClick)=\"ok.emit($event)\"\n        ></immino-button>\n      </div>\n    </div>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
@@ -834,13 +1018,13 @@
         },
         {
             "name": "ButtonComponentModule",
-            "id": "module-ButtonComponentModule-9f6fb1ca1753a8313ed0cecc38d2b6c7b61c04837865c6a02e8eea1623c2a7f26ba8432eb03f10f1115042e2702cfe0fcd09479f18e8dff88a9bb17c05146935",
+            "id": "module-ButtonComponentModule-2173e86f9f3d0a9215962c3bfb23f915b44b100cc8b9f693cf60e69bef568d10c68f44b7b918f08c456efbb551454d5b0fafa904ac61061e866d407b153fe00e",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/button/button.component.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'immino-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * What is the button mode?\r\n   */\r\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input() backgroundColor?: string;\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input() label = 'Button';\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output() onClick = new EventEmitter<Event>();\r\n  /**\r\n   * Is button disabled?\r\n   *\r\n   */\r\n  @Input() disabled = false;\r\n\r\n  // TODO: implement icon support with font-awesome\r\n  // @Input() icon: string = '';\r\n  // @Input() iconPosition: 'left' | 'right' = 'left';\r\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\r\n  // @Input() iconOnly = false;\r\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\r\n\r\n  public get classes(): string {\r\n    const classes = {\r\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\r\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\r\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\r\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n    }\r\n    return classes[this.mode];\r\n  }\r\n}\r\n\r\nexport enum ButtonMode {\r\n  Primary = 'primary',\r\n  Secondary = 'secondary',\r\n  Danger = 'danger',\r\n  Warning = 'warning',\r\n  Link = 'link'\r\n}\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule],\r\n  exports: [ButtonComponent]\r\n})\r\nexport class ButtonComponentModule {\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\nexport enum ButtonMode {\n  Primary = 'primary',\n  Secondary = 'secondary',\n  Danger = 'danger',\n  Warning = 'warning',\n  Link = 'link'\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -922,13 +1106,13 @@
         },
         {
             "name": "ModalComponentModule",
-            "id": "module-ModalComponentModule-5878daf414f9ea1ecdc976369f7098d3d6aa945d7c4eb7b59c430397fa0dd36bde96014335c95530cf51a8a50dc0db1a1819064cd49aa28f32b4c88a943c84aa",
+            "id": "module-ModalComponentModule-06f99bb51c048fb43fac916aaf43d13ed44edabec8a5890ad94aa5424e8edde01bce8832d9301d8865fd7f63f580a58fe8e3128324e3e578fd02b4f583c1904b",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/modal/modal.component.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'immino-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '50%';\n  @Input() height = 'auto';\n\n  @Output() close = new EventEmitter();\n  @Output() ok = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [\n    ModalComponent\n  ],\n  imports: [\n    CommonModule,\n    ButtonComponentModule,\n    StringTemplateOutletDirectiveModule\n  ],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'immino-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '500px';\n  @Input() height = 'auto';\n\n  @Output() cancel = new EventEmitter();\n  @Output() ok = new EventEmitter();\n  @Output() close = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [\n    ModalComponent\n  ],\n  imports: [\n    CommonModule,\n    ButtonComponentModule,\n    StringTemplateOutletDirectiveModule\n  ],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1023,7 +1207,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "createReducer(\r\n  initialState,\r\n  on(increment, (state) => state + 1),\r\n  on(decrement, (state) => state - 1),\r\n  on(reset, () => 0)\r\n)"
+                "defaultValue": "createReducer(\n  initialState,\n  on(increment, (state) => state + 1),\n  on(decrement, (state) => state - 1),\n  on(reset, () => 0)\n)"
             },
             {
                 "name": "context",
@@ -1182,7 +1366,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args\r\n})"
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: args\n})"
             },
             {
                 "name": "Template",
@@ -1192,7 +1376,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ModalComponent>",
-                "defaultValue": "(args: ModalComponent) => ({\r\n  props: args\r\n})"
+                "defaultValue": "(args: ModalComponent) => ({\n  props: args,\n})"
             },
             {
                 "name": "Warning",
@@ -1248,6 +1432,16 @@
                         }
                     }
                 ]
+            },
+            {
+                "name": "generateUUID",
+                "file": "src/app/components/modal/modal.service.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": []
             }
         ],
         "typealiases": [
@@ -1316,7 +1510,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "createReducer(\r\n  initialState,\r\n  on(increment, (state) => state + 1),\r\n  on(decrement, (state) => state - 1),\r\n  on(reset, () => 0)\r\n)"
+                    "defaultValue": "createReducer(\n  initialState,\n  on(increment, (state) => state + 1),\n  on(decrement, (state) => state - 1),\n  on(reset, () => 0)\n)"
                 },
                 {
                     "name": "initialState",
@@ -1389,7 +1583,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args\r\n})"
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: args\n})"
                 },
                 {
                     "name": "Warning",
@@ -1509,7 +1703,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<ModalComponent>",
-                    "defaultValue": "(args: ModalComponent) => ({\r\n  props: args\r\n})"
+                    "defaultValue": "(args: ModalComponent) => ({\n  props: args,\n})"
                 }
             ]
         },
@@ -1557,6 +1751,18 @@
                             }
                         }
                     ]
+                }
+            ],
+            "src/app/components/modal/modal.service.ts": [
+                {
+                    "name": "generateUUID",
+                    "file": "src/app/components/modal/modal.service.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": []
                 }
             ]
         },
@@ -1636,7 +1842,7 @@
         ]
     },
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -1645,7 +1851,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -1800,7 +2006,35 @@
                 "linktype": "component",
                 "name": "ModalComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/modal/modal.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ModalService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/modal/modal.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ModalRef",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/modal/modal.service.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "generateUUID",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
