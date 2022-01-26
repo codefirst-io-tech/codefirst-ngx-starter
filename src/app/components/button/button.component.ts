@@ -11,7 +11,7 @@ export class ButtonComponent {
   /**
    * What is the button mode?
    */
-  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';
+  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';
   /**
    * What background color to use
    */
@@ -49,9 +49,18 @@ export class ButtonComponent {
       secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',
       danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',
       warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',
+      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',
     }
     return classes[this.mode];
   }
+}
+
+export enum ButtonMode {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Danger = 'danger',
+  Warning = 'warning',
+  Link = 'link'
 }
 
 @NgModule({

@@ -17,8 +17,251 @@
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [],
-    "directives": [],
+    "classes": [
+        {
+            "name": "NzStringTemplateOutletContext",
+            "id": "class-NzStringTemplateOutletContext-23c8532801bdb2c8ad6f9aea8fc8c50687cf178931bfa020000891d23b2501f7bd10ea59b63482faff217c380e6a2e4d96c5ec3e40b2ea1ff88acd38393277d4",
+            "file": "src/app/common/string-template-outlet.directive.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { Directive, EmbeddedViewRef, Input, NgModule, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';\n\nexport type NzSafeAny = any;\n\n@Directive({\n  selector: '[nzStringTemplateOutlet]',\n})\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\n  private context = new NzStringTemplateOutletContext();\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\n\n  static ngTemplateContextGuard<T>(\n    _dir: StringTemplateOutletDirective<T>,\n    _ctx: NzSafeAny\n  ): _ctx is NzStringTemplateOutletContext {\n    return true;\n  }\n\n  private recreateView(): void {\n    this.viewContainer.clear();\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\n      templateRef,\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\n    );\n  }\n\n  private updateContext(): void {\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\n    if (newCtx) {\n      for (const propName of Object.keys(newCtx)) {\n        oldCtx[propName] = newCtx[propName];\n      }\n    }\n  }\n\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\n\n  ngOnChanges(changes: SimpleChanges): void {\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\n    const shouldRecreateView = (): boolean => {\n      let shouldOutletRecreate = false;\n      if (nzStringTemplateOutlet) {\n        if (nzStringTemplateOutlet.firstChange) {\n          shouldOutletRecreate = true;\n        } else {\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\n        }\n      }\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\n        if (prevCtxKeys.length === currCtxKeys.length) {\n          for (const propName of currCtxKeys) {\n            if (prevCtxKeys.indexOf(propName) === -1) {\n              return true;\n            }\n          }\n          return false;\n        } else {\n          return true;\n        }\n      };\n      const shouldContextRecreate =\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\n      return shouldContextRecreate || shouldOutletRecreate;\n    };\n\n    if (nzStringTemplateOutlet) {\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\n    }\n\n    const recreateView = shouldRecreateView();\n    if (recreateView) {\n      /** recreate view when context shape or outlet change **/\n      this.recreateView();\n    } else {\n      /** update context **/\n      this.updateContext();\n    }\n  }\n}\n\nexport class NzStringTemplateOutletContext {\n  public $implicit: NzSafeAny;\n}\n\n\n@NgModule({\n  declarations: [StringTemplateOutletDirective],\n  exports: [StringTemplateOutletDirective],\n})\nexport class StringTemplateOutletDirectiveModule {}\n",
+            "properties": [
+                {
+                    "name": "$implicit",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NzSafeAny",
+                    "optional": false,
+                    "description": "",
+                    "line": 92,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [
+        {
+            "name": "StringTemplateOutletDirective",
+            "id": "directive-StringTemplateOutletDirective-23c8532801bdb2c8ad6f9aea8fc8c50687cf178931bfa020000891d23b2501f7bd10ea59b63482faff217c380e6a2e4d96c5ec3e40b2ea1ff88acd38393277d4",
+            "file": "src/app/common/string-template-outlet.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, EmbeddedViewRef, Input, NgModule, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';\n\nexport type NzSafeAny = any;\n\n@Directive({\n  selector: '[nzStringTemplateOutlet]',\n})\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\n  private context = new NzStringTemplateOutletContext();\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\n\n  static ngTemplateContextGuard<T>(\n    _dir: StringTemplateOutletDirective<T>,\n    _ctx: NzSafeAny\n  ): _ctx is NzStringTemplateOutletContext {\n    return true;\n  }\n\n  private recreateView(): void {\n    this.viewContainer.clear();\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\n      templateRef,\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\n    );\n  }\n\n  private updateContext(): void {\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\n    if (newCtx) {\n      for (const propName of Object.keys(newCtx)) {\n        oldCtx[propName] = newCtx[propName];\n      }\n    }\n  }\n\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\n\n  ngOnChanges(changes: SimpleChanges): void {\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\n    const shouldRecreateView = (): boolean => {\n      let shouldOutletRecreate = false;\n      if (nzStringTemplateOutlet) {\n        if (nzStringTemplateOutlet.firstChange) {\n          shouldOutletRecreate = true;\n        } else {\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\n        }\n      }\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\n        if (prevCtxKeys.length === currCtxKeys.length) {\n          for (const propName of currCtxKeys) {\n            if (prevCtxKeys.indexOf(propName) === -1) {\n              return true;\n            }\n          }\n          return false;\n        } else {\n          return true;\n        }\n      };\n      const shouldContextRecreate =\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\n      return shouldContextRecreate || shouldOutletRecreate;\n    };\n\n    if (nzStringTemplateOutlet) {\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\n    }\n\n    const recreateView = shouldRecreateView();\n    if (recreateView) {\n      /** recreate view when context shape or outlet change **/\n      this.recreateView();\n    } else {\n      /** update context **/\n      this.updateContext();\n    }\n  }\n}\n\nexport class NzStringTemplateOutletContext {\n  public $implicit: NzSafeAny;\n}\n\n\n@NgModule({\n  declarations: [StringTemplateOutletDirective],\n  exports: [StringTemplateOutletDirective],\n})\nexport class StringTemplateOutletDirectiveModule {}\n",
+            "selector": "[nzStringTemplateOutlet]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "nzStringTemplateOutlet",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "NzSafeAny | TemplateRef<NzSafeAny>",
+                    "decorators": []
+                },
+                {
+                    "name": "nzStringTemplateOutletContext",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "NzSafeAny | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "context",
+                    "defaultValue": "new NzStringTemplateOutletContext()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "embeddedViewRef",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "EmbeddedViewRef<NzSafeAny> | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngTemplateContextGuard",
+                    "args": [
+                        {
+                            "name": "_dir",
+                            "type": "StringTemplateOutletDirective<T>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "_ctx",
+                            "type": "NzSafeAny",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "NzStringTemplateOutletContext",
+                    "typeParameters": [
+                        "T"
+                    ],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "_dir",
+                            "type": "StringTemplateOutletDirective<T>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "_ctx",
+                            "type": "NzSafeAny",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "recreateView",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "updateContext",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "implements": [
+                "OnChanges"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "viewContainer",
+                        "type": "ViewContainerRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<NzSafeAny>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 40,
+                "jsdoctags": [
+                    {
+                        "name": "viewContainer",
+                        "type": "ViewContainerRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<NzSafeAny>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
     "components": [
         {
             "name": "AppComponent",
@@ -69,11 +312,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": ""
+            "templateData": "<immino-modal\r\n  title=\"armut modal\"\r\n  width=\"500px\"\r\n  [bodyTemplate]=\"armut\"\r\n>\r\n</immino-modal>\r\n\r\n<ng-template #armut>\r\n  <p>armut modal</p>\r\n</ng-template>\r\n\r\n"
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-a96adefdf4096a4bf53ab5cab5dd2af350adb1cb5f544f111830c94059fab2b47783b4b197dab3a09a1bb73426da6d7b3e31b7ba2eb6630dc91c774fd6888eba",
+            "id": "component-ButtonComponent-9f6fb1ca1753a8313ed0cecc38d2b6c7b61c04837865c6a02e8eea1623c2a7f26ba8432eb03f10f1115042e2702cfe0fcd09479f18e8dff88a9bb17c05146935",
             "file": "src/app/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -119,15 +362,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 712,
-                            "end": 725,
+                            "pos": 746,
+                            "end": 760,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 713,
-                                "end": 721,
+                                "pos": 747,
+                                "end": 755,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -151,7 +394,7 @@
                     "rawdescription": "\n\nWhat is the button mode?\n",
                     "description": "<p>What is the button mode?</p>\n",
                     "line": 14,
-                    "type": "\"primary\" | \"secondary\" | \"danger\" | \"warning\"",
+                    "type": "\"primary\" | \"secondary\" | \"danger\" | \"warning\" | \"link\"",
                     "decorators": []
                 },
                 {
@@ -187,7 +430,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-center py-2 px-4 rounded',\n      secondary: 'bg-immino-blue hover:bg-cyan-600 border border-bg-white text-white text-center py-2 px-4 rounded',\n      danger: 'bg-immino-red hover:bg-red-700 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-immino-yellow hover:bg-yellow-700 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'immino-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * What is the button mode?\r\n   */\r\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input() backgroundColor?: string;\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input() label = 'Button';\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output() onClick = new EventEmitter<Event>();\r\n  /**\r\n   * Is button disabled?\r\n   *\r\n   */\r\n  @Input() disabled = false;\r\n\r\n  // TODO: implement icon support with font-awesome\r\n  // @Input() icon: string = '';\r\n  // @Input() iconPosition: 'left' | 'right' = 'left';\r\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\r\n  // @Input() iconOnly = false;\r\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\r\n\r\n  public get classes(): string {\r\n    const classes = {\r\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\r\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\r\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\r\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n    }\r\n    return classes[this.mode];\r\n  }\r\n}\r\n\r\nexport enum ButtonMode {\r\n  Primary = 'primary',\r\n  Secondary = 'secondary',\r\n  Danger = 'danger',\r\n  Warning = 'warning',\r\n  Link = 'link'\r\n}\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule],\r\n  exports: [ButtonComponent]\r\n})\r\nexport class ButtonComponentModule {\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -207,7 +450,7 @@
                     }
                 }
             },
-            "templateData": "<button\n  (click)=\"onClick.emit()\"\n  [ngClass]=\"classes\"\n  [disabled]=\"disabled\"\n  aria-label=\"{{ label }}\"\n>\n  {{ label }}\n</button>\n"
+            "templateData": "<button\n  (click)=\"onClick.emit()\"\n  [ngClass]=\"classes\"\n  [disabled]=\"disabled\"\n>\n  {{ label }}\n</button>\n"
         },
         {
             "name": "CounterComponent",
@@ -388,18 +631,132 @@
                 }
             ],
             "stylesData": ""
+        },
+        {
+            "name": "ModalComponent",
+            "id": "component-ModalComponent-5878daf414f9ea1ecdc976369f7098d3d6aa945d7c4eb7b59c430397fa0dd36bde96014335c95530cf51a8a50dc0db1a1819064cd49aa28f32b4c88a943c84aa",
+            "file": "src/app/components/modal/modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "immino-modal",
+            "styleUrls": [
+                "./modal.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./modal.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "bodyTemplate",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "TemplateRef<any> | null | string",
+                    "decorators": []
+                },
+                {
+                    "name": "height",
+                    "defaultValue": "'auto'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "width",
+                    "defaultValue": "'50%'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "close",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "ok",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "ButtonMode",
+                    "defaultValue": "ButtonMode",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'immino-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '50%';\n  @Input() height = 'auto';\n\n  @Output() close = new EventEmitter();\n  @Output() ok = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [\n    ModalComponent\n  ],\n  imports: [\n    CommonModule,\n    ButtonComponentModule,\n    StringTemplateOutletDirectiveModule\n  ],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".modal-mask {\r\n  position: fixed;\r\n  z-index: 9998;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgba(31, 31, 31, 0.6);\r\n  display: table;\r\n  transition: opacity 0.3s ease;\r\n}\r\n\r\n.modal-wrapper {\r\n  position: absolute;\r\n  z-index: 11;\r\n  width: auto;\r\n  height: auto;\r\n  transform: translate(-50%, -50%);\r\n  left: 50%;\r\n  top: 50%;\r\n}\r\n\r\n.modal-container {\r\n  height: auto;\r\n  border-radius: 6px;\r\n  margin: 0 auto;\r\n  padding: 24px 24px 20px 24px;\r\n  background-color: #fff;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\r\n  transition: all 0.3s ease;\r\n  z-index: 10;\r\n}\r\n\r\n.modal-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n\r\n  p {\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n    line-height: 1.3;\r\n    letter-spacing: -0.2px;\r\n    color: #1f1f1f;\r\n  }\r\n\r\n  .modal-close-icon {\r\n    background-image: url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h24v24H0z'/%3E%3Cpath stroke='%237A8085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m8 8 8 8-4-4 4-4-8 8'/%3E%3Cpath d='M16.38 6.214c.91-.754 2.16.496 1.406 1.406l-.079.087L13.415 12l4.292 4.293c.914.914-.388 2.272-1.327 1.493l-.087-.079L12 13.415l-4.293 4.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083L12 10.585l4.293-4.292.087-.08z' fill='%23707070'/%3E%3C/g%3E%3C/svg%3E%0A\");\r\n    cursor: pointer;\r\n    width: 24px;\r\n    height: 24px;\r\n  }\r\n}\r\n\r\n.modal-outside-mask {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: fixed;\r\n  z-index: 9;\r\n  top: 0;\r\n  left: 0;\r\n  background-color: transparent;\r\n  display: table;\r\n  transition: opacity 0.3s ease;\r\n  cursor: pointer;\r\n}\r\n\r\n.modal-body {\r\n  margin: 20px 0;\r\n}\r\n\r\n.modal-default-button {\r\n  float: right;\r\n}\r\n\r\n.modal-footer {\r\n  text-align: end;\r\n\r\n  .button {\r\n    width: fit-content;\r\n\r\n    &:last-of-type {\r\n      margin-left: 10px;\r\n    }\r\n  }\r\n}\r\n\r\n/*\r\n * The following styles are auto-applied to elements with\r\n * transition=\"modal\" when their visibility is toggled\r\n * by Vue.js.\r\n *\r\n * You can easily play with the modal transition by editing\r\n * these styles.\r\n */\r\n\r\n.modal-enter-from,\r\n.modal-leave-to {\r\n  opacity: 0;\r\n}\r\n\r\n.modal-enter-active .modal-container,\r\n.modal-leave-active .modal-container {\r\n  -webkit-transform: scale(1.1);\r\n  transform: scale(1.1);\r\n}\r\n",
+                    "styleUrl": "./modal.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"modal-mask\">\n  <div class=\"modal-outside-mask\"></div>\n  <div class=\"modal-wrapper\">\n    <div class=\"modal-container\" [ngStyle]=\"{'width': width}\">\n      <section class=\"modal-header\">\n        <p>{{ title }}</p>\n        <div class=\"modal-close-icon\"></div>\n      </section>\n\n      <div class=\"modal-body\">\n\n        <ng-container *ngIf=\"!bodyTemplate\">\n          <ng-content></ng-content>\n        </ng-container>\n\n        <ng-container *ngIf=\"bodyTemplate\">\n          <div *nzStringTemplateOutlet=\"bodyTemplate\">{{ bodyTemplate }}</div>\n        </ng-container>\n\n      </div>\n\n      <div class=\"modal-footer\">\n        <immino-button\n          label=\"Cancel\"\n          [mode]=\"ButtonMode.Link\"\n          (onClick)=\"close.emit($event)\"\n        ></immino-button>\n\n        <immino-button\n          label=\"OK\"\n          [mode]=\"ButtonMode.Secondary\"\n          (onClick)=\"ok.emit($event)\"\n        ></immino-button>\n      </div>\n    </div>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-adee6fb5523c595959efb41aa3a527a23fd349875b3f9c00979373c611bef4f7f5876897997cbf5d86d73cf46fd3a554db988c9330eb4ecac8089d556fd1e021",
+            "id": "module-AppModule-f70f23eb250f569ef9792df5cbb62570c9fa2c7ddba4aee25cf7930c99a9cc504487ff87f51fe850baa2edb2047351b7317c86e1206ba994e532f02578649885",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { environment } from '../environments/environment';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { counterReducer } from './components/counter/counter.reducer';\nimport { CounterComponentModule } from './components/counter/counter.component';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    StoreModule.forRoot(\n      {\n        count: counterReducer\n      },\n      {}\n    ),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),\n    CounterComponentModule,\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { environment } from '../environments/environment';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { counterReducer } from './components/counter/counter.reducer';\nimport { CounterComponentModule } from './components/counter/counter.component';\nimport { ModalComponentModule } from './components/modal/modal.component';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    StoreModule.forRoot(\n      {\n        count: counterReducer\n      },\n      {}\n    ),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),\n    CounterComponentModule,\n    ModalComponentModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -477,13 +834,13 @@
         },
         {
             "name": "ButtonComponentModule",
-            "id": "module-ButtonComponentModule-a96adefdf4096a4bf53ab5cab5dd2af350adb1cb5f544f111830c94059fab2b47783b4b197dab3a09a1bb73426da6d7b3e31b7ba2eb6630dc91c774fd6888eba",
+            "id": "module-ButtonComponentModule-9f6fb1ca1753a8313ed0cecc38d2b6c7b61c04837865c6a02e8eea1623c2a7f26ba8432eb03f10f1115042e2702cfe0fcd09479f18e8dff88a9bb17c05146935",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/button/button.component.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\n\n@Component({\n  selector: 'immino-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' = 'primary';\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n  /**\n   * Optional click handler\n   */\n  @Output() onClick = new EventEmitter<Event>();\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-center py-2 px-4 rounded',\n      secondary: 'bg-immino-blue hover:bg-cyan-600 border border-bg-white text-white text-center py-2 px-4 rounded',\n      danger: 'bg-immino-red hover:bg-red-700 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-immino-yellow hover:bg-yellow-700 text-white text-center py-2 px-4 rounded',\n    }\n    return classes[this.mode];\n  }\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'immino-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * What is the button mode?\r\n   */\r\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input() backgroundColor?: string;\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input() label = 'Button';\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output() onClick = new EventEmitter<Event>();\r\n  /**\r\n   * Is button disabled?\r\n   *\r\n   */\r\n  @Input() disabled = false;\r\n\r\n  // TODO: implement icon support with font-awesome\r\n  // @Input() icon: string = '';\r\n  // @Input() iconPosition: 'left' | 'right' = 'left';\r\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\r\n  // @Input() iconOnly = false;\r\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\r\n\r\n  public get classes(): string {\r\n    const classes = {\r\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\r\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\r\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\r\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n    }\r\n    return classes[this.mode];\r\n  }\r\n}\r\n\r\nexport enum ButtonMode {\r\n  Primary = 'primary',\r\n  Secondary = 'secondary',\r\n  Danger = 'danger',\r\n  Warning = 'warning',\r\n  Link = 'link'\r\n}\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule],\r\n  exports: [ButtonComponent]\r\n})\r\nexport class ButtonComponentModule {\r\n}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -550,6 +907,98 @@
                     "elements": [
                         {
                             "name": "CounterComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ModalComponentModule",
+            "id": "module-ModalComponentModule-5878daf414f9ea1ecdc976369f7098d3d6aa945d7c4eb7b59c430397fa0dd36bde96014335c95530cf51a8a50dc0db1a1819064cd49aa28f32b4c88a943c84aa",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/modal/modal.component.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'immino-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '50%';\n  @Input() height = 'auto';\n\n  @Output() close = new EventEmitter();\n  @Output() ok = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [\n    ModalComponent\n  ],\n  imports: [\n    CommonModule,\n    ButtonComponentModule,\n    StringTemplateOutletDirectiveModule\n  ],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {\n}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ModalComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "StringTemplateOutletDirectiveModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ModalComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "StringTemplateOutletDirectiveModule",
+            "id": "module-StringTemplateOutletDirectiveModule-23c8532801bdb2c8ad6f9aea8fc8c50687cf178931bfa020000891d23b2501f7bd10ea59b63482faff217c380e6a2e4d96c5ec3e40b2ea1ff88acd38393277d4",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/common/string-template-outlet.directive.ts",
+            "methods": [],
+            "sourceCode": "import { Directive, EmbeddedViewRef, Input, NgModule, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';\n\nexport type NzSafeAny = any;\n\n@Directive({\n  selector: '[nzStringTemplateOutlet]',\n})\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\n  private context = new NzStringTemplateOutletContext();\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\n\n  static ngTemplateContextGuard<T>(\n    _dir: StringTemplateOutletDirective<T>,\n    _ctx: NzSafeAny\n  ): _ctx is NzStringTemplateOutletContext {\n    return true;\n  }\n\n  private recreateView(): void {\n    this.viewContainer.clear();\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\n      templateRef,\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\n    );\n  }\n\n  private updateContext(): void {\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\n    if (newCtx) {\n      for (const propName of Object.keys(newCtx)) {\n        oldCtx[propName] = newCtx[propName];\n      }\n    }\n  }\n\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\n\n  ngOnChanges(changes: SimpleChanges): void {\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\n    const shouldRecreateView = (): boolean => {\n      let shouldOutletRecreate = false;\n      if (nzStringTemplateOutlet) {\n        if (nzStringTemplateOutlet.firstChange) {\n          shouldOutletRecreate = true;\n        } else {\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\n        }\n      }\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\n        if (prevCtxKeys.length === currCtxKeys.length) {\n          for (const propName of currCtxKeys) {\n            if (prevCtxKeys.indexOf(propName) === -1) {\n              return true;\n            }\n          }\n          return false;\n        } else {\n          return true;\n        }\n      };\n      const shouldContextRecreate =\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\n      return shouldContextRecreate || shouldOutletRecreate;\n    };\n\n    if (nzStringTemplateOutlet) {\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\n    }\n\n    const recreateView = shouldRecreateView();\n    if (recreateView) {\n      /** recreate view when context shape or outlet change **/\n      this.recreateView();\n    } else {\n      /** update context **/\n      this.updateContext();\n    }\n  }\n}\n\nexport class NzStringTemplateOutletContext {\n  public $implicit: NzSafeAny;\n}\n\n\n@NgModule({\n  declarations: [StringTemplateOutletDirective],\n  exports: [StringTemplateOutletDirective],\n})\nexport class StringTemplateOutletDirectiveModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "StringTemplateOutletDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "StringTemplateOutletDirective"
                         }
                     ]
                 },
@@ -677,6 +1126,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/modal/modal.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -724,6 +1183,16 @@
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
                 "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/modal/modal.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ModalComponent>",
+                "defaultValue": "(args: ModalComponent) => ({\r\n  props: args\r\n})"
             },
             {
                 "name": "Warning",
@@ -781,8 +1250,62 @@
                 ]
             }
         ],
-        "typealiases": [],
-        "enumerations": [],
+        "typealiases": [
+            {
+                "name": "NzSafeAny",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "any",
+                "file": "src/app/common/string-template-outlet.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 130
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "ButtonMode",
+                "childs": [
+                    {
+                        "name": "Primary",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "primary"
+                    },
+                    {
+                        "name": "Secondary",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "secondary"
+                    },
+                    {
+                        "name": "Danger",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "danger"
+                    },
+                    {
+                        "name": "Warning",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "warning"
+                    },
+                    {
+                        "name": "Link",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "link"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/components/button/button.component.ts"
+            }
+        ],
         "groupedVariables": {
             "src/app/components/counter/counter.reducer.ts": [
                 {
@@ -966,6 +1489,28 @@
                     "type": "Story<Header>",
                     "defaultValue": "(args: Header) => ({\n  props: args,\n})"
                 }
+            ],
+            "src/app/components/modal/modal.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/modal/modal.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/modal/modal.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ModalComponent>",
+                    "defaultValue": "(args: ModalComponent) => ({\r\n  props: args\r\n})"
+                }
             ]
         },
         "groupedFunctions": {
@@ -1015,8 +1560,66 @@
                 }
             ]
         },
-        "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedEnumerations": {
+            "src/app/components/button/button.component.ts": [
+                {
+                    "name": "ButtonMode",
+                    "childs": [
+                        {
+                            "name": "Primary",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "primary"
+                        },
+                        {
+                            "name": "Secondary",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "secondary"
+                        },
+                        {
+                            "name": "Danger",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "danger"
+                        },
+                        {
+                            "name": "Warning",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "warning"
+                        },
+                        {
+                            "name": "Link",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "link"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/components/button/button.component.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "src/app/common/string-template-outlet.directive.ts": [
+                {
+                    "name": "NzSafeAny",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "any",
+                    "file": "src/app/common/string-template-outlet.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 130
+                }
+            ]
+        }
     },
     "routes": {
         "name": "<root>",
@@ -1041,6 +1644,24 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/common/string-template-outlet.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "StringTemplateOutletDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/common/string-template-outlet.directive.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "NzStringTemplateOutletContext",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
                 "status": "low"
@@ -1169,6 +1790,35 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/modal/modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/modal/modal.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/modal/modal.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
