@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/omrumbakitemiz/codefirst-ngx-starter/compare/v1.2.2...v1.3.0) (2022-01-26)
+
+
+### Features
+
+* **modal:** modal component added ([#5](https://github.com/omrumbakitemiz/codefirst-ngx-starter/issues/5)) ([474a2fd](https://github.com/omrumbakitemiz/codefirst-ngx-starter/commit/474a2fd374e40ceecd52025582259a5055b7b529))
+
 ### [1.2.2](https://github.com/omrumbakitemiz/codefirst-ngx-starter/compare/v1.2.1...v1.2.2) (2022-01-25)
 
 ### [1.2.1](https://github.com/omrumbakitemiz/codefirst-ngx-starter/compare/v1.2.0...v1.2.1) (2022-01-15)
