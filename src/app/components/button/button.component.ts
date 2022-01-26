@@ -45,8 +45,8 @@ export class ButtonComponent {
 
   public get classes(): string {
     const classes = {
-      primary: 'bg-white hover:bg-gray-200 text-black text-center py-2 px-4 rounded',
-      secondary: 'bg-transparent hover:bg-white border border-bg-white text-white hover:text-black text-center py-2 px-4 rounded',
+      primary: 'bg-green-300 hover:bg-green-400 text-black text-center py-2 px-4 rounded',
+      secondary: 'bg-cyan-500 hover:bg-cyan-600 border border-bg-white text-white text-center py-2 px-4 rounded',
       danger: 'bg-red-500 hover:bg-red-700 text-white text-center py-2 px-4 rounded',
       warning: 'bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-4 rounded',
     }
