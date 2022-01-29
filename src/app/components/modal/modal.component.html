@@ -20,12 +20,14 @@
 
       <div class="modal-footer">
         <immino-button
+          class="mx-1"
           label="Cancel"
           [mode]="ButtonMode.Primary"
           (onClick)="cancel.emit($event)"
         ></immino-button>
 
         <immino-button
+          class="mx-1"
           label="OK"
           [mode]="ButtonMode.Secondary"
           (onClick)="ok.emit($event)"

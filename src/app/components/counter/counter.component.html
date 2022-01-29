@@ -1,7 +1,9 @@
-<button class="btn btn-blue" (click)="increment()">Increment</button>
+<div class="flex flex-col w-1/3">
+  <button class="btn btn-green my-2 mx-1" (click)="increment()">Increment</button>
 
-<div>Current Count: {{ count$ | async }}</div>
+  <div class="my-2 text-center">Current Count: {{ count$ | async }}</div>
 
-<button class="btn btn-blue" (click)="decrement()">Decrement</button>
+  <button class="btn btn-red my-2 mx-1" (click)="decrement()">Decrement</button>
 
-<button class="btn btn-blue" (click)="reset()">Reset Counter</button>
+  <button class="btn btn-blue my-2 mx-auto" (click)="reset()">Reset Counter</button>
+</div>
