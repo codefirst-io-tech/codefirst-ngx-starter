@@ -1,11 +1,20 @@
+/**
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE
+ */
+
+/* eslint @typescript-eslint/no-explicit-any: 0 */
+
 import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
+import { Store } from '@ngrx/store';
+
 import { decrement, increment, reset } from './counter.actions';
 
 @Component({
-  selector: 'immino-counter',
+  selector: 'codefirst-counter',
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
@@ -16,15 +25,15 @@ export class CounterComponent {
     this.count$ = store.select('count');
   }
 
-  increment() {
+  increment(): void {
     this.store.dispatch(increment());
   }
 
-  decrement() {
+  decrement(): void {
     this.store.dispatch(decrement());
   }
 
-  reset() {
+  reset(): void {
     this.store.dispatch(reset());
   }
 }

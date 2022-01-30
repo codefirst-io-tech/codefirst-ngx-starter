@@ -9,6 +9,9 @@
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "release": "standard-version -s",
+    "format:check": "prettier --config ./.prettierrc.js --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
+    "lint": "eslint --cache . --ext .ts,.html",
+    "lint:fix": "eslint --fix --cache . --ext .ts,.html",
     "prepare": "husky install",
     "commit": "cz",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
@@ -39,6 +42,11 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.2.0",
+    "@angular-eslint/builder": "^13.0.1",
+    "@angular-eslint/eslint-plugin": "^13.0.1",
+    "@angular-eslint/eslint-plugin-template": "^13.0.1",
+    "@angular-eslint/schematics": "^13.0.1",
+    "@angular-eslint/template-parser": "^13.0.1",
     "@angular/cli": "13.2.0",
     "@angular/compiler-cli": "13.2.0",
     "@angular/elements": "13.2.0",
@@ -57,11 +65,21 @@
     "@tailwindcss/typography": "^0.5.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^17.0.12",
+    "@typescript-eslint/eslint-plugin": "5.10.1",
+    "@typescript-eslint/parser": "5.3.1",
     "@webcomponents/custom-elements": "^1.5.0",
     "babel-loader": "^8.2.3",
-    "chromatic": "^6.4.1",
+    "chromatic": "^6.4.2",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "~8.3.0",
+    "eslint-plugin-header": "~3.1.1",
+    "eslint-plugin-import": "~2.25.4",
+    "eslint-plugin-jsdoc": "~37.0.3",
+    "eslint-plugin-prefer-arrow": "~1.2.3",
+    "eslint-plugin-prettier": "~4.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^7.0.4",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.12",
@@ -69,8 +87,10 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "~2.3.2",
     "standard-version": "^9.3.2",
-    "tailwindcss": "^3.0.16",
+    "tailwindcss": "^3.0.18",
     "typescript": "^4.5.5"
   },
   "overrides": {
@@ -80,5 +100,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "(schematics|scripts|components)/**/!(tslint-rules|testing)/!(polyfills).{html,ts}": [
+      "eslint --fix"
+    ]
   }
 }

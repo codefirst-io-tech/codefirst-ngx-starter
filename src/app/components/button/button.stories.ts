@@ -1,4 +1,10 @@
+/**
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE
+ */
+
 import { Meta, Story } from '@storybook/angular';
+
 import { ButtonComponent } from './button.component';
 
 export default {
@@ -7,7 +13,7 @@ export default {
    * to learn how to generate automatic titles
    */
   title: 'Button',
-  component: ButtonComponent,
+  component: ButtonComponent
 } as Meta;
 
 const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
@@ -20,7 +26,7 @@ Primary.args = {
   size: 'medium',
   disabled: false,
   backgroundColor: 'white',
-  label: 'ImminoButton',
+  label: 'ImminoButton'
 };
 
 export const Secondary = Template.bind({});
@@ -29,7 +35,7 @@ Secondary.args = {
   size: 'medium',
   disabled: false,
   backgroundColor: 'white',
-  label: 'ImminoButton',
+  label: 'ImminoButton'
 };
 
 export const Danger = Template.bind({});
@@ -38,7 +44,7 @@ Danger.args = {
   size: 'medium',
   disabled: false,
   backgroundColor: 'white',
-  label: 'ImminoButton',
+  label: 'ImminoButton'
 };
 
 export const Warning = Template.bind({});
@@ -47,5 +53,5 @@ Warning.args = {
   size: 'medium',
   disabled: false,
   backgroundColor: 'white',
-  label: 'ImminoButton',
+  label: 'ImminoButton'
 };
