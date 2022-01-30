@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/omrumbakitemiz/codefirst-ngx-starter/compare/v1.4.1...v1.4.2) (2022-01-30)
+
+
+### Bug Fixes
+
+* **build:** github actions config fix ([2eac4f8](https://github.com/omrumbakitemiz/codefirst-ngx-starter/commit/2eac4f84e34615bf20d767010264488187b0f995))
+
 ### [1.4.1](https://github.com/omrumbakitemiz/codefirst-ngx-starter/compare/v1.4.0...v1.4.1) (2022-01-30)
 
 ## [1.4.0](https://github.com/omrumbakitemiz/codefirst-ngx-starter/compare/v1.2.2...v1.4.0) (2022-01-30)
