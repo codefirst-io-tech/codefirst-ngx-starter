@@ -1,9 +1,26 @@
-import { Directive, EmbeddedViewRef, Input, NgModule, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+/**
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE
+ */
+
+/* eslint @typescript-eslint/no-explicit-any: 0 */
+
+import {
+  Directive,
+  EmbeddedViewRef,
+  Input,
+  NgModule,
+  OnChanges,
+  SimpleChange,
+  SimpleChanges,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 
 export type NzSafeAny = any;
 
 @Directive({
-  selector: '[nzStringTemplateOutlet]',
+  selector: '[nzStringTemplateOutlet]'
 })
 export class StringTemplateOutletDirective<_T = unknown> implements OnChanges {
   private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;
@@ -92,9 +109,8 @@ export class NzStringTemplateOutletContext {
   public $implicit: NzSafeAny;
 }
 
-
 @NgModule({
   declarations: [StringTemplateOutletDirective],
-  exports: [StringTemplateOutletDirective],
+  exports: [StringTemplateOutletDirective]
 })
 export class StringTemplateOutletDirectiveModule {}

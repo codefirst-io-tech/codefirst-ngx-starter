@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { CounterComponent } from './counter.component';
+
 import { decrement, increment, reset } from './counter.actions';
+import { CounterComponent } from './counter.component';
 
 describe('CounterComponent', () => {
   let component: CounterComponent;
@@ -12,12 +14,9 @@ describe('CounterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CounterComponent ],
-      providers: [
-        provideMockStore({ initialState })
-      ]
-    })
-    .compileComponents();
+      declarations: [CounterComponent],
+      providers: [provideMockStore({ initialState })]
+    }).compileComponents();
 
     store = TestBed.inject(MockStore);
   });
