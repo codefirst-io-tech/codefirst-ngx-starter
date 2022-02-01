@@ -20,7 +20,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           owner: ${{ github.owner }}
           repo: ${{ github.repo }}
-          tag: ${{ github.ref }}
           name: ${{ github.ref }}
           body: ${{ github.head_commit.message }}
           draft: false
