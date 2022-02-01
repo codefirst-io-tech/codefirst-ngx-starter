@@ -18,6 +18,6 @@ jobs:
       - run: npm run release
 
       - name: Release
-      - uses: fregante/release-with-changelog@v3
+        uses: fregante/release-with-changelog@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
