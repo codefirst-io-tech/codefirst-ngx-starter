@@ -18,9 +18,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          owner: ${{ github.owner }}
-          repo: ${{ github.repo }}
           name: ${{ github.ref }}
+          tag_name: ${{ github.ref }}
           body: ${{ github.head_commit.message }}
           draft: false
           prerelease: false
