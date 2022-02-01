@@ -14,12 +14,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Run release script
+        run: npm run release
       - name: Release
-        uses: softprops/action-gh-release@v1
+      - uses: fregante/release-with-changelog@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ github.ref }}
-          tag_name: ${{ github.ref }}
-          body: ${{ github.head_commit.message }}
-          draft: false
-          prerelease: false
