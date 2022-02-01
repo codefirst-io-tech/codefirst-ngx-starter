@@ -3,8 +3,13 @@
 # Workflow name
 name: 'Chromatic Publish'
 
-# Event for the workflow
-on: push
+# Only trigger, when the build workflow succeeded
+on:
+  workflow_run:
+    workflows: ["Test"]
+    types:
+      - completed
+
 
 # List of jobs
 jobs:

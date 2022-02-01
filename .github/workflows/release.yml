@@ -1,18 +1,22 @@
 name: Release
 
+# Only trigger, when the test workflow succeeded
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Test"]
+    types:
+      - completed
+
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: $GITHUB_REF == 'refs/tags/v.*'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           owner: ${{ github.owner }}
