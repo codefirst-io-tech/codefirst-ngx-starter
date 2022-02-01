@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run release script
-        run: npm run release
+      - run: npm run release
       - name: Release
       - uses: fregante/release-with-changelog@v3
         with:
