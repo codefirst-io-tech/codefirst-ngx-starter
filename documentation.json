@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "ModalRef",
-            "id": "interface-ModalRef-f4cf64f8ffd1cd227998223bbd93bd4681dd20dc3cb3ed56b03add77b2b3fb43e91518b979a771a07dc75e694cf4c95fd30f98584e7d8a30a97ff2ef435151bb",
+            "id": "interface-ModalRef-2145f110fee2c25db29835ae993f6db53398030e339d5c4840277c084a18f1d0697447d25b72bca824f58fd8288a5e3c78ae31dd210097bcbe0eb46ada5e6c57",
             "file": "src/app/components/modal/modal.service.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\nexport function generateUUID() {\r\n  // Public Domain/MIT\r\n  let d = new Date().getTime(); //Timestamp\r\n  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported\r\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\r\n    let r = Math.random() * 16; //random number between 0 and 16\r\n    if (d > 0) {\r\n      //Use timestamp until depleted\r\n      r = (d + r) % 16 | 0;\r\n      d = Math.floor(d / 16);\r\n    } else {\r\n      //Use microseconds since page-load if supported\r\n      r = (d2 + r) % 16 | 0;\r\n      d2 = Math.floor(d2 / 16);\r\n    }\r\n    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);\r\n  });\r\n}\r\n\r\nexport interface ModalRef {\r\n  id: string;\r\n  onOk?: any,\r\n  onCancel?: any,\r\n  onClose?: any,\r\n  status?: 'SHOW' | 'HIDE';\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ModalService {\r\n  show(component: any, config?: any): ModalRef {\r\n    const modalRef: ModalRef = {\r\n      id: generateUUID(),\r\n      status: 'SHOW',\r\n      onOk: new BehaviorSubject(null),\r\n    };\r\n\r\n    return modalRef;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\nexport function generateUUID(): string {\n  // Public Domain/MIT\n  let d = new Date().getTime(); //Timestamp\n  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    let r = Math.random() * 16; //random number between 0 and 16\n    if (d > 0) {\n      //Use timestamp until depleted\n      r = (d + r) % 16 | 0;\n      d = Math.floor(d / 16);\n    } else {\n      //Use microseconds since page-load if supported\n      r = (d2 + r) % 16 | 0;\n      d2 = Math.floor(d2 / 16);\n    }\n    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);\n  });\n}\n\nexport interface ModalRef {\n  id: string;\n  onOk?: any;\n  onCancel?: any;\n  onClose?: any;\n  status?: 'SHOW' | 'HIDE';\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class ModalService {\n  /* eslint-disable unused-imports/no-unused-vars */\n  show(component: any, config?: any): ModalRef {\n    return {\n      id: generateUUID(),\n      status: 'SHOW',\n      onOk: new BehaviorSubject(null)\n    };\n  }\n}\n",
             "properties": [
                 {
                     "name": "id",
@@ -17,7 +17,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 31
                 },
                 {
                     "name": "onCancel",
@@ -26,7 +26,7 @@
                     "type": "any",
                     "optional": true,
                     "description": "",
-                    "line": 26
+                    "line": 33
                 },
                 {
                     "name": "onClose",
@@ -35,7 +35,7 @@
                     "type": "any",
                     "optional": true,
                     "description": "",
-                    "line": 27
+                    "line": 34
                 },
                 {
                     "name": "onOk",
@@ -44,7 +44,7 @@
                     "type": "any",
                     "optional": true,
                     "description": "",
-                    "line": 25
+                    "line": 32
                 },
                 {
                     "name": "status",
@@ -53,30 +53,18 @@
                     "type": "\"SHOW\" | \"HIDE\"",
                     "optional": true,
                     "description": "",
-                    "line": 28
+                    "line": 35
                 }
             ],
             "indexSignatures": [],
             "kind": 165,
-            "methods": []
-        },
-        {
-            "name": "User",
-            "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
-            "file": "src/stories/User.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface User {}\n",
-            "properties": [],
-            "indexSignatures": [],
             "methods": []
         }
     ],
     "injectables": [
         {
             "name": "ModalService",
-            "id": "injectable-ModalService-f4cf64f8ffd1cd227998223bbd93bd4681dd20dc3cb3ed56b03add77b2b3fb43e91518b979a771a07dc75e694cf4c95fd30f98584e7d8a30a97ff2ef435151bb",
+            "id": "injectable-ModalService-2145f110fee2c25db29835ae993f6db53398030e339d5c4840277c084a18f1d0697447d25b72bca824f58fd8288a5e3c78ae31dd210097bcbe0eb46ada5e6c57",
             "file": "src/app/components/modal/modal.service.ts",
             "properties": [],
             "methods": [
@@ -100,7 +88,7 @@
                     "optional": false,
                     "returnType": "ModalRef",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -130,7 +118,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\nexport function generateUUID() {\r\n  // Public Domain/MIT\r\n  let d = new Date().getTime(); //Timestamp\r\n  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported\r\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\r\n    let r = Math.random() * 16; //random number between 0 and 16\r\n    if (d > 0) {\r\n      //Use timestamp until depleted\r\n      r = (d + r) % 16 | 0;\r\n      d = Math.floor(d / 16);\r\n    } else {\r\n      //Use microseconds since page-load if supported\r\n      r = (d2 + r) % 16 | 0;\r\n      d2 = Math.floor(d2 / 16);\r\n    }\r\n    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);\r\n  });\r\n}\r\n\r\nexport interface ModalRef {\r\n  id: string;\r\n  onOk?: any,\r\n  onCancel?: any,\r\n  onClose?: any,\r\n  status?: 'SHOW' | 'HIDE';\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ModalService {\r\n  show(component: any, config?: any): ModalRef {\r\n    const modalRef: ModalRef = {\r\n      id: generateUUID(),\r\n      status: 'SHOW',\r\n      onOk: new BehaviorSubject(null),\r\n    };\r\n\r\n    return modalRef;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\nexport function generateUUID(): string {\n  // Public Domain/MIT\n  let d = new Date().getTime(); //Timestamp\n  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    let r = Math.random() * 16; //random number between 0 and 16\n    if (d > 0) {\n      //Use timestamp until depleted\n      r = (d + r) % 16 | 0;\n      d = Math.floor(d / 16);\n    } else {\n      //Use microseconds since page-load if supported\n      r = (d2 + r) % 16 | 0;\n      d2 = Math.floor(d2 / 16);\n    }\n    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);\n  });\n}\n\nexport interface ModalRef {\n  id: string;\n  onOk?: any;\n  onCancel?: any;\n  onClose?: any;\n  status?: 'SHOW' | 'HIDE';\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class ModalService {\n  /* eslint-disable unused-imports/no-unused-vars */\n  show(component: any, config?: any): ModalRef {\n    return {\n      id: generateUUID(),\n      status: 'SHOW',\n      onOk: new BehaviorSubject(null)\n    };\n  }\n}\n",
             "type": "injectable"
         }
     ],
@@ -139,12 +127,12 @@
     "classes": [
         {
             "name": "NzStringTemplateOutletContext",
-            "id": "class-NzStringTemplateOutletContext-30ec2f74c58a31e27590ff116319ca6726e033ee4fe5c2dedb620fb74fd7bda6b5cd3229177066f09b09bda2c012c223b44854f806e64748aeb172f1979d70bc",
+            "id": "class-NzStringTemplateOutletContext-ca5c7a40794106fcdc5c744d551cafcb72998f8b8e2c2ce8b238cb59f67457ccf442e2d0b680c57a9987c3afaad70f8ff0ad5385603ff3149ad487f56309c5ef",
             "file": "src/app/common/string-template-outlet.directive.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { Directive, EmbeddedViewRef, Input, NgModule, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';\r\n\r\nexport type NzSafeAny = any;\r\n\r\n@Directive({\r\n  selector: '[nzStringTemplateOutlet]',\r\n})\r\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\r\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\r\n  private context = new NzStringTemplateOutletContext();\r\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\r\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\r\n\r\n  static ngTemplateContextGuard<T>(\r\n    _dir: StringTemplateOutletDirective<T>,\r\n    _ctx: NzSafeAny\r\n  ): _ctx is NzStringTemplateOutletContext {\r\n    return true;\r\n  }\r\n\r\n  private recreateView(): void {\r\n    this.viewContainer.clear();\r\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\r\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\r\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\r\n      templateRef,\r\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\r\n    );\r\n  }\r\n\r\n  private updateContext(): void {\r\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\r\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\r\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\r\n    if (newCtx) {\r\n      for (const propName of Object.keys(newCtx)) {\r\n        oldCtx[propName] = newCtx[propName];\r\n      }\r\n    }\r\n  }\r\n\r\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\r\n    const shouldRecreateView = (): boolean => {\r\n      let shouldOutletRecreate = false;\r\n      if (nzStringTemplateOutlet) {\r\n        if (nzStringTemplateOutlet.firstChange) {\r\n          shouldOutletRecreate = true;\r\n        } else {\r\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\r\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\r\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\r\n        }\r\n      }\r\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\r\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\r\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\r\n        if (prevCtxKeys.length === currCtxKeys.length) {\r\n          for (const propName of currCtxKeys) {\r\n            if (prevCtxKeys.indexOf(propName) === -1) {\r\n              return true;\r\n            }\r\n          }\r\n          return false;\r\n        } else {\r\n          return true;\r\n        }\r\n      };\r\n      const shouldContextRecreate =\r\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\r\n      return shouldContextRecreate || shouldOutletRecreate;\r\n    };\r\n\r\n    if (nzStringTemplateOutlet) {\r\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\r\n    }\r\n\r\n    const recreateView = shouldRecreateView();\r\n    if (recreateView) {\r\n      /** recreate view when context shape or outlet change **/\r\n      this.recreateView();\r\n    } else {\r\n      /** update context **/\r\n      this.updateContext();\r\n    }\r\n  }\r\n}\r\n\r\nexport class NzStringTemplateOutletContext {\r\n  public $implicit: NzSafeAny;\r\n}\r\n\r\n\r\n@NgModule({\r\n  declarations: [StringTemplateOutletDirective],\r\n  exports: [StringTemplateOutletDirective],\r\n})\r\nexport class StringTemplateOutletDirectiveModule {}\r\n",
+            "sourceCode": "import {\n  Directive,\n  EmbeddedViewRef,\n  Input,\n  NgModule,\n  OnChanges,\n  SimpleChange,\n  SimpleChanges,\n  TemplateRef,\n  ViewContainerRef\n} from '@angular/core';\n\nexport type NzSafeAny = any;\n\n@Directive({\n  selector: '[nzStringTemplateOutlet]'\n})\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\n  private context = new NzStringTemplateOutletContext();\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\n\n  static ngTemplateContextGuard<T>(\n    _dir: StringTemplateOutletDirective<T>,\n    _ctx: NzSafeAny\n  ): _ctx is NzStringTemplateOutletContext {\n    return true;\n  }\n\n  private recreateView(): void {\n    this.viewContainer.clear();\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\n      templateRef,\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\n    );\n  }\n\n  private updateContext(): void {\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\n    if (newCtx) {\n      for (const propName of Object.keys(newCtx)) {\n        oldCtx[propName] = newCtx[propName];\n      }\n    }\n  }\n\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\n\n  ngOnChanges(changes: SimpleChanges): void {\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\n    const shouldRecreateView = (): boolean => {\n      let shouldOutletRecreate = false;\n      if (nzStringTemplateOutlet) {\n        if (nzStringTemplateOutlet.firstChange) {\n          shouldOutletRecreate = true;\n        } else {\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\n        }\n      }\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\n        if (prevCtxKeys.length === currCtxKeys.length) {\n          for (const propName of currCtxKeys) {\n            if (prevCtxKeys.indexOf(propName) === -1) {\n              return true;\n            }\n          }\n          return false;\n        } else {\n          return true;\n        }\n      };\n      const shouldContextRecreate =\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\n      return shouldContextRecreate || shouldOutletRecreate;\n    };\n\n    if (nzStringTemplateOutlet) {\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\n    }\n\n    const recreateView = shouldRecreateView();\n    if (recreateView) {\n      /** recreate view when context shape or outlet change **/\n      this.recreateView();\n    } else {\n      /** update context **/\n      this.updateContext();\n    }\n  }\n}\n\nexport class NzStringTemplateOutletContext {\n  public $implicit: NzSafeAny;\n}\n\n@NgModule({\n  declarations: [StringTemplateOutletDirective],\n  exports: [StringTemplateOutletDirective]\n})\nexport class StringTemplateOutletDirectiveModule {}\n",
             "properties": [
                 {
                     "name": "$implicit",
@@ -153,7 +141,7 @@
                     "type": "NzSafeAny",
                     "optional": false,
                     "description": "",
-                    "line": 92,
+                    "line": 109,
                     "modifierKind": [
                         123
                     ]
@@ -170,12 +158,12 @@
     "directives": [
         {
             "name": "StringTemplateOutletDirective",
-            "id": "directive-StringTemplateOutletDirective-30ec2f74c58a31e27590ff116319ca6726e033ee4fe5c2dedb620fb74fd7bda6b5cd3229177066f09b09bda2c012c223b44854f806e64748aeb172f1979d70bc",
+            "id": "directive-StringTemplateOutletDirective-ca5c7a40794106fcdc5c744d551cafcb72998f8b8e2c2ce8b238cb59f67457ccf442e2d0b680c57a9987c3afaad70f8ff0ad5385603ff3149ad487f56309c5ef",
             "file": "src/app/common/string-template-outlet.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, EmbeddedViewRef, Input, NgModule, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';\r\n\r\nexport type NzSafeAny = any;\r\n\r\n@Directive({\r\n  selector: '[nzStringTemplateOutlet]',\r\n})\r\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\r\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\r\n  private context = new NzStringTemplateOutletContext();\r\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\r\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\r\n\r\n  static ngTemplateContextGuard<T>(\r\n    _dir: StringTemplateOutletDirective<T>,\r\n    _ctx: NzSafeAny\r\n  ): _ctx is NzStringTemplateOutletContext {\r\n    return true;\r\n  }\r\n\r\n  private recreateView(): void {\r\n    this.viewContainer.clear();\r\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\r\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\r\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\r\n      templateRef,\r\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\r\n    );\r\n  }\r\n\r\n  private updateContext(): void {\r\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\r\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\r\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\r\n    if (newCtx) {\r\n      for (const propName of Object.keys(newCtx)) {\r\n        oldCtx[propName] = newCtx[propName];\r\n      }\r\n    }\r\n  }\r\n\r\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\r\n    const shouldRecreateView = (): boolean => {\r\n      let shouldOutletRecreate = false;\r\n      if (nzStringTemplateOutlet) {\r\n        if (nzStringTemplateOutlet.firstChange) {\r\n          shouldOutletRecreate = true;\r\n        } else {\r\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\r\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\r\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\r\n        }\r\n      }\r\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\r\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\r\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\r\n        if (prevCtxKeys.length === currCtxKeys.length) {\r\n          for (const propName of currCtxKeys) {\r\n            if (prevCtxKeys.indexOf(propName) === -1) {\r\n              return true;\r\n            }\r\n          }\r\n          return false;\r\n        } else {\r\n          return true;\r\n        }\r\n      };\r\n      const shouldContextRecreate =\r\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\r\n      return shouldContextRecreate || shouldOutletRecreate;\r\n    };\r\n\r\n    if (nzStringTemplateOutlet) {\r\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\r\n    }\r\n\r\n    const recreateView = shouldRecreateView();\r\n    if (recreateView) {\r\n      /** recreate view when context shape or outlet change **/\r\n      this.recreateView();\r\n    } else {\r\n      /** update context **/\r\n      this.updateContext();\r\n    }\r\n  }\r\n}\r\n\r\nexport class NzStringTemplateOutletContext {\r\n  public $implicit: NzSafeAny;\r\n}\r\n\r\n\r\n@NgModule({\r\n  declarations: [StringTemplateOutletDirective],\r\n  exports: [StringTemplateOutletDirective],\r\n})\r\nexport class StringTemplateOutletDirectiveModule {}\r\n",
+            "sourceCode": "import {\n  Directive,\n  EmbeddedViewRef,\n  Input,\n  NgModule,\n  OnChanges,\n  SimpleChange,\n  SimpleChanges,\n  TemplateRef,\n  ViewContainerRef\n} from '@angular/core';\n\nexport type NzSafeAny = any;\n\n@Directive({\n  selector: '[nzStringTemplateOutlet]'\n})\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\n  private context = new NzStringTemplateOutletContext();\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\n\n  static ngTemplateContextGuard<T>(\n    _dir: StringTemplateOutletDirective<T>,\n    _ctx: NzSafeAny\n  ): _ctx is NzStringTemplateOutletContext {\n    return true;\n  }\n\n  private recreateView(): void {\n    this.viewContainer.clear();\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\n      templateRef,\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\n    );\n  }\n\n  private updateContext(): void {\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\n    if (newCtx) {\n      for (const propName of Object.keys(newCtx)) {\n        oldCtx[propName] = newCtx[propName];\n      }\n    }\n  }\n\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\n\n  ngOnChanges(changes: SimpleChanges): void {\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\n    const shouldRecreateView = (): boolean => {\n      let shouldOutletRecreate = false;\n      if (nzStringTemplateOutlet) {\n        if (nzStringTemplateOutlet.firstChange) {\n          shouldOutletRecreate = true;\n        } else {\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\n        }\n      }\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\n        if (prevCtxKeys.length === currCtxKeys.length) {\n          for (const propName of currCtxKeys) {\n            if (prevCtxKeys.indexOf(propName) === -1) {\n              return true;\n            }\n          }\n          return false;\n        } else {\n          return true;\n        }\n      };\n      const shouldContextRecreate =\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\n      return shouldContextRecreate || shouldOutletRecreate;\n    };\n\n    if (nzStringTemplateOutlet) {\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\n    }\n\n    const recreateView = shouldRecreateView();\n    if (recreateView) {\n      /** recreate view when context shape or outlet change **/\n      this.recreateView();\n    } else {\n      /** update context **/\n      this.updateContext();\n    }\n  }\n}\n\nexport class NzStringTemplateOutletContext {\n  public $implicit: NzSafeAny;\n}\n\n@NgModule({\n  declarations: [StringTemplateOutletDirective],\n  exports: [StringTemplateOutletDirective]\n})\nexport class StringTemplateOutletDirectiveModule {}\n",
             "selector": "[nzStringTemplateOutlet]",
             "providers": [],
             "inputsClass": [
@@ -184,7 +172,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 29,
                     "type": "NzSafeAny | TemplateRef<NzSafeAny>",
                     "decorators": []
                 },
@@ -193,7 +181,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 28,
                     "type": "NzSafeAny | null",
                     "decorators": []
                 }
@@ -212,7 +200,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 27,
                     "modifierKind": [
                         121
                     ]
@@ -225,7 +213,7 @@
                     "type": "EmbeddedViewRef<NzSafeAny> | null",
                     "optional": false,
                     "description": "",
-                    "line": 9,
+                    "line": 26,
                     "modifierKind": [
                         121
                     ]
@@ -245,7 +233,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -281,7 +269,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 14,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -314,7 +302,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -327,7 +315,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -357,7 +345,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 40,
+                "line": 57,
                 "jsdoctags": [
                     {
                         "name": "viewContainer",
@@ -384,14 +372,14 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-e05007012b4a0ca58903966ceef965276d76fca17a46443d8a010bdf6c8cfe2556ca9b3431787d370f02661c3ca5ce652a01873491721fcf6ec3fa409c3aa894",
+            "id": "component-AppComponent-6e719488f3006ca6591accaa9c6d498ffd9e9aa765c3781c7fc052657108337d6992541fac351081ee164475eee4626653133c4199d8d1d8faf9a562cbb9975f",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-root",
+            "selector": "codefirst-root",
             "styleUrls": [
                 "./app.component.scss"
             ],
@@ -411,7 +399,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 11
+                    "line": 17
                 }
             ],
             "methodsClass": [
@@ -421,7 +409,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -431,7 +419,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -441,7 +429,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 21,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -453,7 +441,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ModalComponent } from './components/modal/modal.component';\r\nimport { ModalService } from './components/modal/modal.service';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'codefirst-ngx-starter';\r\n\r\n  constructor(private modalService: ModalService) {}\r\n\r\n  showModal() {\r\n    const modalRef = this.modalService.show(ModalComponent);\r\n\r\n    modalRef.onOk.subscribe(() => {\r\n      console.log('OK');\r\n    });\r\n  }\r\n\r\n  onCancel() {\r\n    console.log('cancel');\r\n  }\r\n\r\n  onOk() {\r\n    console.log('ok');\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { ModalComponent } from './components/modal/modal.component';\nimport { ModalService } from './components/modal/modal.service';\n\n@Component({\n  selector: 'codefirst-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'codefirst-ngx-starter';\n\n  constructor(private modalService: ModalService) {}\n\n  showModal(): void {\n    const modalRef = this.modalService.show(ModalComponent);\n\n    modalRef.onOk.subscribe(() => {\n      console.log('OK');\n    });\n  }\n\n  onCancel(): void {\n    console.log('cancel');\n  }\n\n  onOk(): void {\n    console.log('ok');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -475,7 +463,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 11,
+                "line": 17,
                 "jsdoctags": [
                     {
                         "name": "modalService",
@@ -488,11 +476,11 @@
                     }
                 ]
             },
-            "templateData": "<immino-modal\r\n  title=\"armut modal\"\r\n  width=\"500px\"\r\n  [bodyTemplate]=\"armut\"\r\n  (cancel)=\"onCancel()\"\r\n  (ok)=\"onOk()\"\r\n>\r\n</immino-modal>\r\n\r\n<ng-template #armut>\r\n  <p>armut modal</p>\r\n</ng-template>\r\n\r\n"
+            "templateData": "<!--<immino-modal-->\n<!--  class=\"m-2\"-->\n<!--  title=\"armut modal\"-->\n<!--  width=\"500px\"-->\n<!--  (cancel)=\"onCancel()\"-->\n<!--  (ok)=\"onOk()\"-->\n<!--&gt;-->\n<!--</immino-modal>-->\n\n<div class=\"m-4\">\n  <codefirst-counter></codefirst-counter>\n</div>\n"
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-9f6fb1ca1753a8313ed0cecc38d2b6c7b61c04837865c6a02e8eea1623c2a7f26ba8432eb03f10f1115042e2702cfe0fcd09479f18e8dff88a9bb17c05146935",
+            "id": "component-ButtonComponent-55699821b7d8ffa5c6014d397d450142e19a8cb15a836cae434fab191eca26b8356fbc94d3ba83693cff5a42486ceeff036f36fe1b63d2b21bd3f292a33ba95b",
             "file": "src/app/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -500,7 +488,7 @@
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "immino-button",
+            "selector": "codefirst-button",
             "styleUrls": [
                 "./button.component.scss"
             ],
@@ -516,7 +504,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhat background color to use\n",
                     "description": "<p>What background color to use</p>\n",
-                    "line": 18,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -527,7 +515,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIs button disabled?\n\n",
                     "description": "<p>Is button disabled?</p>\n",
-                    "line": 37,
+                    "line": 42,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -538,15 +526,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 746,
-                            "end": 760,
+                            "pos": 897,
+                            "end": 910,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 747,
-                                "end": 755,
+                                "pos": 898,
+                                "end": 906,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -558,7 +546,7 @@
                     ],
                     "rawdescription": "\n\nButton contents\n\n",
                     "description": "<p>Button contents</p>\n",
-                    "line": 28,
+                    "line": 36,
                     "type": "string",
                     "decorators": []
                 },
@@ -569,7 +557,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhat is the button mode?\n",
                     "description": "<p>What is the button mode?</p>\n",
-                    "line": 14,
+                    "line": 19,
                     "type": "\"primary\" | \"secondary\" | \"danger\" | \"warning\" | \"link\"",
                     "decorators": []
                 },
@@ -580,23 +568,12 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHow large should the button be?\n",
                     "description": "<p>How large should the button be?</p>\n",
-                    "line": 22,
+                    "line": 29,
                     "type": "\"small\" | \"medium\" | \"large\"",
                     "decorators": []
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nOptional click handler\n",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 32,
-                    "type": "EventEmitter"
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
@@ -606,7 +583,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'immino-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * What is the button mode?\r\n   */\r\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input() backgroundColor?: string;\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input() label = 'Button';\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output() onClick = new EventEmitter<Event>();\r\n  /**\r\n   * Is button disabled?\r\n   *\r\n   */\r\n  @Input() disabled = false;\r\n\r\n  // TODO: implement icon support with font-awesome\r\n  // @Input() icon: string = '';\r\n  // @Input() iconPosition: 'left' | 'right' = 'left';\r\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\r\n  // @Input() iconOnly = false;\r\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\r\n\r\n  public get classes(): string {\r\n    const classes = {\r\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\r\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\r\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\r\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n    }\r\n    return classes[this.mode];\r\n  }\r\n}\r\n\r\nexport enum ButtonMode {\r\n  Primary = 'primary',\r\n  Secondary = 'secondary',\r\n  Danger = 'danger',\r\n  Warning = 'warning',\r\n  Link = 'link'\r\n}\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule],\r\n  exports: [ButtonComponent]\r\n})\r\nexport class ButtonComponentModule {\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';\n\n@Component({\n  selector: 'codefirst-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\n\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded'\n    };\n    return classes[this.mode];\n  }\n}\n\nexport enum ButtonMode {\n  Primary = 'primary',\n  Secondary = 'secondary',\n  Danger = 'danger',\n  Warning = 'warning',\n  Link = 'link'\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -622,22 +599,22 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 46
+                        "line": 51
                     }
                 }
             },
-            "templateData": "<button\r\n  (click)=\"onClick.emit()\"\r\n  [ngClass]=\"classes\"\r\n  [disabled]=\"disabled\"\r\n>\r\n  {{ label }}\r\n</button>\r\n"
+            "templateData": "<button [ngClass]=\"classes\" [disabled]=\"disabled\">\n  {{ label }}\n</button>\n"
         },
         {
             "name": "CounterComponent",
-            "id": "component-CounterComponent-ba548310f2e5563dcad15ccbc373626bbc9e02fc0e4e9188985d2f599402bafb15f90ba0f6bf85d2c90b5e3008ad14656df9da73c75b6298f5d7560d40ceffa9",
+            "id": "component-CounterComponent-88b8f8a223bc0d23f709c70f8916efe631eae85ff1238a16a8bb2bfd2b3d47667120444f23f957649595961ae88a1ec5500f0d4e7c22f10b62f0c7801aecdb22",
             "file": "src/app/components/counter/counter.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "immino-counter",
+            "selector": "codefirst-counter",
             "styleUrls": [
                 "./counter.component.scss"
             ],
@@ -656,7 +633,7 @@
                     "type": "Observable<number>",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 22
                 }
             ],
             "methodsClass": [
@@ -666,7 +643,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -676,7 +653,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -686,7 +663,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -698,11 +675,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, NgModule } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { decrement, increment, reset } from './counter.actions';\n\n@Component({\n  selector: 'immino-counter',\n  templateUrl: './counter.component.html',\n  styleUrls: ['./counter.component.scss']\n})\nexport class CounterComponent {\n  count$: Observable<number>;\n\n  constructor(private store: Store<{ count: number }>) {\n    this.count$ = store.select('count');\n  }\n\n  increment() {\n    this.store.dispatch(increment());\n  }\n\n  decrement() {\n    this.store.dispatch(decrement());\n  }\n\n  reset() {\n    this.store.dispatch(reset());\n  }\n}\n\n@NgModule({\n  imports: [CommonModule],\n  declarations: [CounterComponent],\n  providers: [],\n  exports: [CounterComponent]\n})\nexport class CounterComponentModule {}",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, NgModule } from '@angular/core';\nimport { Observable } from 'rxjs';\n\nimport { Store } from '@ngrx/store';\n\nimport { decrement, increment, reset } from './counter.actions';\n\n@Component({\n  selector: 'codefirst-counter',\n  templateUrl: './counter.component.html',\n  styleUrls: ['./counter.component.scss']\n})\nexport class CounterComponent {\n  count$: Observable<number>;\n\n  constructor(private store: Store<{ count: number }>) {\n    this.count$ = store.select('count');\n  }\n\n  increment(): void {\n    this.store.dispatch(increment());\n  }\n\n  decrement(): void {\n    this.store.dispatch(decrement());\n  }\n\n  reset(): void {\n    this.store.dispatch(reset());\n  }\n}\n\n@NgModule({\n  imports: [CommonModule],\n  declarations: [CounterComponent],\n  providers: [],\n  exports: [CounterComponent]\n})\nexport class CounterComponentModule {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".btn {\r\n  @apply font-bold py-2 px-4 rounded;\r\n}\r\n.btn-blue {\r\n  @apply bg-blue-500 text-white;\r\n}\r\n.btn-blue:hover {\r\n  @apply bg-blue-700;\r\n}\r\n",
+                    "data": ".btn {\n  @apply font-bold py-2 px-4 rounded;\n}\n\n.btn-blue {\n  @apply bg-blue-500 text-white;\n}\n\n.btn-blue:hover {\n  @apply bg-blue-700;\n}\n\n.btn-red {\n  @apply bg-red-500 text-white;\n}\n\n.btn-red:hover {\n  @apply bg-red-700;\n}\n\n.btn-green {\n  @apply bg-green-500 text-white;\n}\n\n.btn-green:hover {\n  @apply bg-green-700;\n}\n",
                     "styleUrl": "./counter.component.scss"
                 }
             ],
@@ -720,7 +697,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 13,
+                "line": 22,
                 "jsdoctags": [
                     {
                         "name": "store",
@@ -733,91 +710,18 @@
                     }
                 ]
             },
-            "templateData": "<button class=\"btn btn-blue\" (click)=\"increment()\">Increment</button>\n\n<div>Current Count: {{ count$ | async }}</div>\n\n<button class=\"btn btn-blue\" (click)=\"decrement()\">Decrement</button>\n\n<button class=\"btn btn-blue\" (click)=\"reset()\">Reset Counter</button>\n"
-        },
-        {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-e2ae8647152abb9c48b82d0123f3528fe96c39dbff59ada77f38226985bd0b4bbc1bb41865af99e5f58ce11724ccc3a2bc599f5507a92fe1aa56cc133d95a237",
-            "file": "src/stories/header.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
-            ],
-            "styles": [],
-            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <immino-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></immino-button>\n        <immino-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></immino-button>\n        <immino-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></immino-button>\n      </div>\n    </div>\n  </header>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 54,
-                    "type": "User | null",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 63,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 57,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 60,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <immino-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></immino-button>\n        <immino-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></immino-button>\n        <immino-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></immino-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
-            "stylesData": ""
+            "templateData": "<div class=\"flex flex-col w-1/3\">\n  <button class=\"btn btn-green my-2 mx-1\" (click)=\"increment()\">Increment</button>\n\n  <div class=\"my-2 text-center\">Current Count: {{ count$ | async }}</div>\n\n  <button class=\"btn btn-red my-2 mx-1\" (click)=\"decrement()\">Decrement</button>\n\n  <button class=\"btn btn-blue my-2 mx-auto\" (click)=\"reset()\">Reset Counter</button>\n</div>\n"
         },
         {
             "name": "ModalComponent",
-            "id": "component-ModalComponent-6baccd4242063e44d29c943fb3cc01445d5ba6cf35bfa55a3147242cc99ece4bf80c1a9dfa25104d9f9453c39f1612d6a2f02a151496e21e64750d399fecb2e4",
+            "id": "component-ModalComponent-8b02ff00066685e5b2ccb43f09462ff6815e1d2631d55f9827eeac8451d5d88e3dfe32c9eadd5e185618c1b8737d39fc40f160f59589f836b96b56007a586a38",
             "file": "src/app/components/modal/modal.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "immino-modal",
+            "selector": "codefirst-modal",
             "styleUrls": [
                 "./modal.component.scss"
             ],
@@ -832,7 +736,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 23,
                     "type": "TemplateRef<any> | null | string",
                     "decorators": []
                 },
@@ -841,7 +745,7 @@
                     "defaultValue": "'auto'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 },
@@ -850,7 +754,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 },
@@ -859,7 +763,7 @@
                     "defaultValue": "'info'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -868,7 +772,7 @@
                     "defaultValue": "'500px'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 }
@@ -879,15 +783,15 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 28,
                     "type": "EventEmitter"
                 },
                 {
-                    "name": "close",
+                    "name": "modalClose",
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 30,
                     "type": "EventEmitter"
                 },
                 {
@@ -895,7 +799,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 29,
                     "type": "EventEmitter"
                 }
             ],
@@ -908,7 +812,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 20
                 }
             ],
             "methodsClass": [],
@@ -919,28 +823,28 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\r\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\r\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\r\n\r\n@Component({\r\n  selector: 'immino-modal',\r\n  templateUrl: './modal.component.html',\r\n  styleUrls: ['./modal.component.scss']\r\n})\r\nexport class ModalComponent {\r\n  ButtonMode = ButtonMode;\r\n\r\n  @Input() title = '';\r\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\r\n  @Input() type = 'info';\r\n  @Input() width = '500px';\r\n  @Input() height = 'auto';\r\n\r\n  @Output() cancel = new EventEmitter();\r\n  @Output() ok = new EventEmitter();\r\n  @Output() close = new EventEmitter();\r\n}\r\n\r\n@NgModule({\r\n  declarations: [\r\n    ModalComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponentModule,\r\n    StringTemplateOutletDirectiveModule\r\n  ],\r\n  exports: [ModalComponent]\r\n})\r\nexport class ModalComponentModule {\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\n\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'codefirst-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '500px';\n  @Input() height = 'auto';\n\n  @Output() readonly cancel = new EventEmitter();\n  @Output() readonly ok = new EventEmitter();\n  @Output() readonly modalClose = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [ModalComponent],\n  imports: [CommonModule, ButtonComponentModule, StringTemplateOutletDirectiveModule],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".modal-mask {\r\n  position: fixed;\r\n  z-index: 9998;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgba(31, 31, 31, 0.6);\r\n  display: table;\r\n  transition: opacity 0.3s ease;\r\n}\r\n\r\n.modal-wrapper {\r\n  position: absolute;\r\n  z-index: 11;\r\n  width: auto;\r\n  height: auto;\r\n  transform: translate(-50%, -50%);\r\n  left: 50%;\r\n  top: 50%;\r\n}\r\n\r\n.modal-container {\r\n  height: auto;\r\n  border-radius: 6px;\r\n  margin: 0 auto;\r\n  padding: 24px 24px 20px 24px;\r\n  background-color: #fff;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\r\n  transition: all 0.3s ease;\r\n  z-index: 10;\r\n}\r\n\r\n.modal-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n\r\n  p {\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n    line-height: 1.3;\r\n    letter-spacing: -0.2px;\r\n    color: #1f1f1f;\r\n  }\r\n\r\n  .modal-close-icon {\r\n    background-image: url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h24v24H0z'/%3E%3Cpath stroke='%237A8085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m8 8 8 8-4-4 4-4-8 8'/%3E%3Cpath d='M16.38 6.214c.91-.754 2.16.496 1.406 1.406l-.079.087L13.415 12l4.292 4.293c.914.914-.388 2.272-1.327 1.493l-.087-.079L12 13.415l-4.293 4.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083L12 10.585l4.293-4.292.087-.08z' fill='%23707070'/%3E%3C/g%3E%3C/svg%3E%0A\");\r\n    cursor: pointer;\r\n    width: 24px;\r\n    height: 24px;\r\n  }\r\n}\r\n\r\n.modal-outside-mask {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: fixed;\r\n  z-index: 9;\r\n  top: 0;\r\n  left: 0;\r\n  background-color: transparent;\r\n  display: table;\r\n  transition: opacity 0.3s ease;\r\n  cursor: pointer;\r\n}\r\n\r\n.modal-body {\r\n  margin: 20px 0;\r\n}\r\n\r\n.modal-default-button {\r\n  float: right;\r\n}\r\n\r\n.modal-footer {\r\n  text-align: end;\r\n\r\n  .button {\r\n    width: fit-content;\r\n\r\n    &:last-of-type {\r\n      margin-left: 10px;\r\n    }\r\n  }\r\n}\r\n\r\n/*\r\n * The following styles are auto-applied to elements with\r\n * transition=\"modal\" when their visibility is toggled\r\n * by Vue.js.\r\n *\r\n * You can easily play with the modal transition by editing\r\n * these styles.\r\n */\r\n\r\n.modal-enter-from,\r\n.modal-leave-to {\r\n  opacity: 0;\r\n}\r\n\r\n.modal-enter-active .modal-container,\r\n.modal-leave-active .modal-container {\r\n  -webkit-transform: scale(1.1);\r\n  transform: scale(1.1);\r\n}\r\n",
+                    "data": ".modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(31, 31, 31, 0.6);\n  display: table;\n  transition: opacity 0.3s ease;\n}\n\n.modal-wrapper {\n  position: absolute;\n  z-index: 11;\n  width: auto;\n  height: auto;\n  transform: translate(-50%, -50%);\n  left: 50%;\n  top: 50%;\n}\n\n.modal-container {\n  height: auto;\n  border-radius: 6px;\n  margin: 0 auto;\n  padding: 24px 24px 20px 24px;\n  background-color: #fff;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n  transition: all 0.3s ease;\n  z-index: 10;\n}\n\n.modal-header {\n  display: flex;\n  justify-content: space-between;\n\n  p {\n    font-size: 20px;\n    font-weight: bold;\n    line-height: 1.3;\n    letter-spacing: -0.2px;\n    color: #1f1f1f;\n  }\n\n  .modal-close-icon {\n    background-image: url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h24v24H0z'/%3E%3Cpath stroke='%237A8085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m8 8 8 8-4-4 4-4-8 8'/%3E%3Cpath d='M16.38 6.214c.91-.754 2.16.496 1.406 1.406l-.079.087L13.415 12l4.292 4.293c.914.914-.388 2.272-1.327 1.493l-.087-.079L12 13.415l-4.293 4.292a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1-.083-1.32l.083-.094a1 1 0 0 1 1.32-.083l.094.083L12 10.585l4.293-4.292.087-.08z' fill='%23707070'/%3E%3C/g%3E%3C/svg%3E%0A\");\n    cursor: pointer;\n    width: 24px;\n    height: 24px;\n  }\n}\n\n.modal-outside-mask {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  z-index: 9;\n  top: 0;\n  left: 0;\n  background-color: transparent;\n  display: table;\n  transition: opacity 0.3s ease;\n  cursor: pointer;\n}\n\n.modal-body {\n  margin: 20px 0;\n}\n\n.modal-default-button {\n  float: right;\n}\n\n.modal-footer {\n  text-align: end;\n\n  .button {\n    width: fit-content;\n\n    &:last-of-type {\n      margin-left: 10px;\n    }\n  }\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n\n.modal-enter-from,\n.modal-leave-to {\n  opacity: 0;\n}\n\n.modal-enter-active .modal-container,\n.modal-leave-active .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n",
                     "styleUrl": "./modal.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"modal-mask\">\r\n  <div class=\"modal-outside-mask\"></div>\r\n  <div class=\"modal-wrapper\">\r\n    <div class=\"modal-container\" [ngStyle]=\"{'width': width}\">\r\n      <section class=\"modal-header\">\r\n        <p>{{ title }}</p>\r\n        <div class=\"modal-close-icon\" (click)=\"close.emit($event)\"></div>\r\n      </section>\r\n\r\n      <div class=\"modal-body\">\r\n\r\n        <ng-container *ngIf=\"!bodyTemplate\">\r\n          <ng-content></ng-content>\r\n        </ng-container>\r\n\r\n        <ng-container *ngIf=\"bodyTemplate\">\r\n          <div *nzStringTemplateOutlet=\"bodyTemplate\">{{ bodyTemplate }}</div>\r\n        </ng-container>\r\n      </div>\r\n\r\n      <div class=\"modal-footer\">\r\n        <immino-button\r\n          label=\"Cancel\"\r\n          [mode]=\"ButtonMode.Primary\"\r\n          (onClick)=\"cancel.emit($event)\"\r\n        ></immino-button>\r\n\r\n        <immino-button\r\n          label=\"OK\"\r\n          [mode]=\"ButtonMode.Secondary\"\r\n          (onClick)=\"ok.emit($event)\"\r\n        ></immino-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+            "templateData": "<div class=\"modal-mask\">\n  <div class=\"modal-outside-mask\"></div>\n  <div class=\"modal-wrapper\">\n    <div class=\"modal-container\" [ngStyle]=\"{ width: width }\">\n      <section class=\"modal-header\">\n        <p>{{ title }}</p>\n        <div class=\"modal-close-icon\" (click)=\"modalClose.emit($event)\"></div>\n      </section>\n\n      <div class=\"modal-body\">\n        <ng-container *ngIf=\"!bodyTemplate\">\n          <ng-content></ng-content>\n        </ng-container>\n\n        <ng-container *ngIf=\"bodyTemplate\">\n          <div *nzStringTemplateOutlet=\"bodyTemplate\">{{ bodyTemplate }}</div>\n        </ng-container>\n      </div>\n\n      <div class=\"modal-footer\">\n        <codefirst-button\n          class=\"mx-1\"\n          label=\"Cancel\"\n          [mode]=\"ButtonMode.Primary\"\n          (click)=\"cancel.emit($event)\"\n        ></codefirst-button>\n\n        <codefirst-button\n          class=\"mx-1\"\n          label=\"OK\"\n          [mode]=\"ButtonMode.Secondary\"\n          (click)=\"ok.emit($event)\"\n        ></codefirst-button>\n      </div>\n    </div>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-db311fe7fa693c6c2e9c2b08a7f99dfe46c90315fb2e3e90f474c2cad29ee35a4cd1d41ccca4f70896797cf5c1c137ce36d3559588843fb1e77eabbac5c029b9",
+            "id": "module-AppModule-27325c45a1415a5129bda332ea6c67c042879cc3c0100065bb92f57f2c9d25ce89bb5f9b5a6c4a685f36c499e5cf2edfcaa0147ded8c7bc26b72ac0425007152",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { StoreModule } from '@ngrx/store';\r\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\r\nimport { environment } from '../environments/environment';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { counterReducer } from './components/counter/counter.reducer';\r\nimport { CounterComponentModule } from './components/counter/counter.component';\r\nimport { ModalComponentModule } from './components/modal/modal.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    StoreModule.forRoot(\r\n      {\r\n        count: counterReducer\r\n      },\r\n      {}\r\n    ),\r\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),\r\n    CounterComponentModule,\r\n    ModalComponentModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule {}\r\n",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\n\nimport { environment } from '../environments/environment';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { CounterComponentModule } from './components/counter/counter.component';\nimport { counterReducer } from './components/counter/counter.reducer';\nimport { ModalComponentModule } from './components/modal/modal.component';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    StoreModule.forRoot(\n      {\n        count: counterReducer\n      },\n      {}\n    ),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),\n    CounterComponentModule,\n    ModalComponentModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -982,13 +886,13 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-78922b3ae99d2c5249b333980bd5afde1b120b2cc6fedfd41b8b2cc90f279797cb4b22e183bf7e1d1dfab8c6100e77e7812c110234d81f866f544f28a3e18b15",
+            "id": "module-AppRoutingModule-19f9b93b406581c4eeba9376fbdda8417c0f9120be46945392e67eab7f7120b1cd9a3eb39a618425296417a896bb7b806ab3a2097d6e4e3ea5079ede7ba39406",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1018,13 +922,13 @@
         },
         {
             "name": "ButtonComponentModule",
-            "id": "module-ButtonComponentModule-9f6fb1ca1753a8313ed0cecc38d2b6c7b61c04837865c6a02e8eea1623c2a7f26ba8432eb03f10f1115042e2702cfe0fcd09479f18e8dff88a9bb17c05146935",
+            "id": "module-ButtonComponentModule-55699821b7d8ffa5c6014d397d450142e19a8cb15a836cae434fab191eca26b8356fbc94d3ba83693cff5a42486ceeff036f36fe1b63d2b21bd3f292a33ba95b",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/button/button.component.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'immino-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * What is the button mode?\r\n   */\r\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input() backgroundColor?: string;\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input() label = 'Button';\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output() onClick = new EventEmitter<Event>();\r\n  /**\r\n   * Is button disabled?\r\n   *\r\n   */\r\n  @Input() disabled = false;\r\n\r\n  // TODO: implement icon support with font-awesome\r\n  // @Input() icon: string = '';\r\n  // @Input() iconPosition: 'left' | 'right' = 'left';\r\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\r\n  // @Input() iconOnly = false;\r\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\r\n\r\n  public get classes(): string {\r\n    const classes = {\r\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\r\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\r\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\r\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\r\n    }\r\n    return classes[this.mode];\r\n  }\r\n}\r\n\r\nexport enum ButtonMode {\r\n  Primary = 'primary',\r\n  Secondary = 'secondary',\r\n  Danger = 'danger',\r\n  Warning = 'warning',\r\n  Link = 'link'\r\n}\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule],\r\n  exports: [ButtonComponent]\r\n})\r\nexport class ButtonComponentModule {\r\n}\r\n",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';\n\n@Component({\n  selector: 'codefirst-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  /**\n   * What is the button mode?\n   */\n  @Input() mode: 'primary' | 'secondary' | 'danger' | 'warning' | 'link' = 'primary';\n\n  /**\n   * What background color to use\n   */\n  @Input() backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input() label = 'Button';\n\n  /**\n   * Is button disabled?\n   *\n   */\n  @Input() disabled = false;\n\n  // TODO: implement icon support with font-awesome\n  // @Input() icon: string = '';\n  // @Input() iconPosition: 'left' | 'right' = 'left';\n  // @Input() iconSize: 'small' | 'medium' | 'large' = 'medium';\n  // @Input() iconOnly = false;\n  // @Input() iconColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';\n\n  public get classes(): string {\n    const classes = {\n      primary: 'bg-immino-green/75 hover:bg-immino-green/100 text-white text-center py-2 px-4 rounded',\n      secondary: 'bg-immino-blue/75 hover:bg-immino-blue/100 text-white text-center py-2 px-4 rounded',\n      danger: 'bg-immino-red/75 hover:bg-immino-red/100 text-white text-center py-2 px-4 rounded',\n      warning: 'bg-immino-yellow/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded',\n      link: 'bg-immino-transparent/75 hover:bg-immino-yellow/100 text-white text-center py-2 px-4 rounded'\n    };\n    return classes[this.mode];\n  }\n}\n\nexport enum ButtonMode {\n  Primary = 'primary',\n  Secondary = 'secondary',\n  Danger = 'danger',\n  Warning = 'warning',\n  Link = 'link'\n}\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule],\n  exports: [ButtonComponent]\n})\nexport class ButtonComponentModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1062,13 +966,13 @@
         },
         {
             "name": "CounterComponentModule",
-            "id": "module-CounterComponentModule-ba548310f2e5563dcad15ccbc373626bbc9e02fc0e4e9188985d2f599402bafb15f90ba0f6bf85d2c90b5e3008ad14656df9da73c75b6298f5d7560d40ceffa9",
+            "id": "module-CounterComponentModule-88b8f8a223bc0d23f709c70f8916efe631eae85ff1238a16a8bb2bfd2b3d47667120444f23f957649595961ae88a1ec5500f0d4e7c22f10b62f0c7801aecdb22",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/counter/counter.component.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, NgModule } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { decrement, increment, reset } from './counter.actions';\n\n@Component({\n  selector: 'immino-counter',\n  templateUrl: './counter.component.html',\n  styleUrls: ['./counter.component.scss']\n})\nexport class CounterComponent {\n  count$: Observable<number>;\n\n  constructor(private store: Store<{ count: number }>) {\n    this.count$ = store.select('count');\n  }\n\n  increment() {\n    this.store.dispatch(increment());\n  }\n\n  decrement() {\n    this.store.dispatch(decrement());\n  }\n\n  reset() {\n    this.store.dispatch(reset());\n  }\n}\n\n@NgModule({\n  imports: [CommonModule],\n  declarations: [CounterComponent],\n  providers: [],\n  exports: [CounterComponent]\n})\nexport class CounterComponentModule {}",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\n/* eslint @typescript-eslint/no-explicit-any: 0 */\n\nimport { CommonModule } from '@angular/common';\nimport { Component, NgModule } from '@angular/core';\nimport { Observable } from 'rxjs';\n\nimport { Store } from '@ngrx/store';\n\nimport { decrement, increment, reset } from './counter.actions';\n\n@Component({\n  selector: 'codefirst-counter',\n  templateUrl: './counter.component.html',\n  styleUrls: ['./counter.component.scss']\n})\nexport class CounterComponent {\n  count$: Observable<number>;\n\n  constructor(private store: Store<{ count: number }>) {\n    this.count$ = store.select('count');\n  }\n\n  increment(): void {\n    this.store.dispatch(increment());\n  }\n\n  decrement(): void {\n    this.store.dispatch(decrement());\n  }\n\n  reset(): void {\n    this.store.dispatch(reset());\n  }\n}\n\n@NgModule({\n  imports: [CommonModule],\n  declarations: [CounterComponent],\n  providers: [],\n  exports: [CounterComponent]\n})\nexport class CounterComponentModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1106,13 +1010,13 @@
         },
         {
             "name": "ModalComponentModule",
-            "id": "module-ModalComponentModule-6baccd4242063e44d29c943fb3cc01445d5ba6cf35bfa55a3147242cc99ece4bf80c1a9dfa25104d9f9453c39f1612d6a2f02a151496e21e64750d399fecb2e4",
+            "id": "module-ModalComponentModule-8b02ff00066685e5b2ccb43f09462ff6815e1d2631d55f9827eeac8451d5d88e3dfe32c9eadd5e185618c1b8737d39fc40f160f59589f836b96b56007a586a38",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/modal/modal.component.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\r\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\r\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\r\n\r\n@Component({\r\n  selector: 'immino-modal',\r\n  templateUrl: './modal.component.html',\r\n  styleUrls: ['./modal.component.scss']\r\n})\r\nexport class ModalComponent {\r\n  ButtonMode = ButtonMode;\r\n\r\n  @Input() title = '';\r\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\r\n  @Input() type = 'info';\r\n  @Input() width = '500px';\r\n  @Input() height = 'auto';\r\n\r\n  @Output() cancel = new EventEmitter();\r\n  @Output() ok = new EventEmitter();\r\n  @Output() close = new EventEmitter();\r\n}\r\n\r\n@NgModule({\r\n  declarations: [\r\n    ModalComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponentModule,\r\n    StringTemplateOutletDirectiveModule\r\n  ],\r\n  exports: [ModalComponent]\r\n})\r\nexport class ModalComponentModule {\r\n}\r\n",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\n/* eslint @typescript-eslint/no-explicit-any: 0 */\n\nimport { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, NgModule, Output, TemplateRef } from '@angular/core';\n\nimport { StringTemplateOutletDirectiveModule } from '../../common/string-template-outlet.directive';\nimport { ButtonComponentModule, ButtonMode } from '../button/button.component';\n\n@Component({\n  selector: 'codefirst-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  ButtonMode = ButtonMode;\n\n  @Input() title = '';\n  @Input() bodyTemplate: TemplateRef<any> | null | string = null;\n  @Input() type = 'info';\n  @Input() width = '500px';\n  @Input() height = 'auto';\n\n  @Output() readonly cancel = new EventEmitter();\n  @Output() readonly ok = new EventEmitter();\n  @Output() readonly modalClose = new EventEmitter();\n}\n\n@NgModule({\n  declarations: [ModalComponent],\n  imports: [CommonModule, ButtonComponentModule, StringTemplateOutletDirectiveModule],\n  exports: [ModalComponent]\n})\nexport class ModalComponentModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1154,13 +1058,13 @@
         },
         {
             "name": "StringTemplateOutletDirectiveModule",
-            "id": "module-StringTemplateOutletDirectiveModule-30ec2f74c58a31e27590ff116319ca6726e033ee4fe5c2dedb620fb74fd7bda6b5cd3229177066f09b09bda2c012c223b44854f806e64748aeb172f1979d70bc",
+            "id": "module-StringTemplateOutletDirectiveModule-ca5c7a40794106fcdc5c744d551cafcb72998f8b8e2c2ce8b238cb59f67457ccf442e2d0b680c57a9987c3afaad70f8ff0ad5385603ff3149ad487f56309c5ef",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/common/string-template-outlet.directive.ts",
             "methods": [],
-            "sourceCode": "import { Directive, EmbeddedViewRef, Input, NgModule, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';\r\n\r\nexport type NzSafeAny = any;\r\n\r\n@Directive({\r\n  selector: '[nzStringTemplateOutlet]',\r\n})\r\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\r\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\r\n  private context = new NzStringTemplateOutletContext();\r\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\r\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\r\n\r\n  static ngTemplateContextGuard<T>(\r\n    _dir: StringTemplateOutletDirective<T>,\r\n    _ctx: NzSafeAny\r\n  ): _ctx is NzStringTemplateOutletContext {\r\n    return true;\r\n  }\r\n\r\n  private recreateView(): void {\r\n    this.viewContainer.clear();\r\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\r\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\r\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\r\n      templateRef,\r\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\r\n    );\r\n  }\r\n\r\n  private updateContext(): void {\r\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\r\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\r\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\r\n    if (newCtx) {\r\n      for (const propName of Object.keys(newCtx)) {\r\n        oldCtx[propName] = newCtx[propName];\r\n      }\r\n    }\r\n  }\r\n\r\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\r\n    const shouldRecreateView = (): boolean => {\r\n      let shouldOutletRecreate = false;\r\n      if (nzStringTemplateOutlet) {\r\n        if (nzStringTemplateOutlet.firstChange) {\r\n          shouldOutletRecreate = true;\r\n        } else {\r\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\r\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\r\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\r\n        }\r\n      }\r\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\r\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\r\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\r\n        if (prevCtxKeys.length === currCtxKeys.length) {\r\n          for (const propName of currCtxKeys) {\r\n            if (prevCtxKeys.indexOf(propName) === -1) {\r\n              return true;\r\n            }\r\n          }\r\n          return false;\r\n        } else {\r\n          return true;\r\n        }\r\n      };\r\n      const shouldContextRecreate =\r\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\r\n      return shouldContextRecreate || shouldOutletRecreate;\r\n    };\r\n\r\n    if (nzStringTemplateOutlet) {\r\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\r\n    }\r\n\r\n    const recreateView = shouldRecreateView();\r\n    if (recreateView) {\r\n      /** recreate view when context shape or outlet change **/\r\n      this.recreateView();\r\n    } else {\r\n      /** update context **/\r\n      this.updateContext();\r\n    }\r\n  }\r\n}\r\n\r\nexport class NzStringTemplateOutletContext {\r\n  public $implicit: NzSafeAny;\r\n}\r\n\r\n\r\n@NgModule({\r\n  declarations: [StringTemplateOutletDirective],\r\n  exports: [StringTemplateOutletDirective],\r\n})\r\nexport class StringTemplateOutletDirectiveModule {}\r\n",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\n/* eslint @typescript-eslint/no-explicit-any: 0 */\n\nimport {\n  Directive,\n  EmbeddedViewRef,\n  Input,\n  NgModule,\n  OnChanges,\n  SimpleChange,\n  SimpleChanges,\n  TemplateRef,\n  ViewContainerRef\n} from '@angular/core';\n\nexport type NzSafeAny = any;\n\n@Directive({\n  selector: '[nzStringTemplateOutlet]'\n})\nexport class StringTemplateOutletDirective<_T = unknown> implements OnChanges {\n  private embeddedViewRef: EmbeddedViewRef<NzSafeAny> | null = null;\n  private context = new NzStringTemplateOutletContext();\n  @Input() nzStringTemplateOutletContext: NzSafeAny | null = null;\n  @Input() nzStringTemplateOutlet: NzSafeAny | TemplateRef<NzSafeAny> = null;\n\n  static ngTemplateContextGuard<T>(\n    _dir: StringTemplateOutletDirective<T>,\n    _ctx: NzSafeAny\n  ): _ctx is NzStringTemplateOutletContext {\n    return true;\n  }\n\n  private recreateView(): void {\n    this.viewContainer.clear();\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const templateRef = (isTemplateRef ? this.nzStringTemplateOutlet : this.templateRef) as NzSafeAny;\n    this.embeddedViewRef = this.viewContainer.createEmbeddedView(\n      templateRef,\n      isTemplateRef ? this.nzStringTemplateOutletContext : this.context\n    );\n  }\n\n  private updateContext(): void {\n    const isTemplateRef = this.nzStringTemplateOutlet instanceof TemplateRef;\n    const newCtx = isTemplateRef ? this.nzStringTemplateOutletContext : this.context;\n    const oldCtx = this.embeddedViewRef!.context as NzSafeAny;\n    if (newCtx) {\n      for (const propName of Object.keys(newCtx)) {\n        oldCtx[propName] = newCtx[propName];\n      }\n    }\n  }\n\n  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<NzSafeAny>) {}\n\n  ngOnChanges(changes: SimpleChanges): void {\n    const { nzStringTemplateOutletContext, nzStringTemplateOutlet } = changes;\n    const shouldRecreateView = (): boolean => {\n      let shouldOutletRecreate = false;\n      if (nzStringTemplateOutlet) {\n        if (nzStringTemplateOutlet.firstChange) {\n          shouldOutletRecreate = true;\n        } else {\n          const isPreviousOutletTemplate = nzStringTemplateOutlet.previousValue instanceof TemplateRef;\n          const isCurrentOutletTemplate = nzStringTemplateOutlet.currentValue instanceof TemplateRef;\n          shouldOutletRecreate = isPreviousOutletTemplate || isCurrentOutletTemplate;\n        }\n      }\n      const hasContextShapeChanged = (ctxChange: SimpleChange): boolean => {\n        const prevCtxKeys = Object.keys(ctxChange.previousValue || {});\n        const currCtxKeys = Object.keys(ctxChange.currentValue || {});\n        if (prevCtxKeys.length === currCtxKeys.length) {\n          for (const propName of currCtxKeys) {\n            if (prevCtxKeys.indexOf(propName) === -1) {\n              return true;\n            }\n          }\n          return false;\n        } else {\n          return true;\n        }\n      };\n      const shouldContextRecreate =\n        nzStringTemplateOutletContext && hasContextShapeChanged(nzStringTemplateOutletContext);\n      return shouldContextRecreate || shouldOutletRecreate;\n    };\n\n    if (nzStringTemplateOutlet) {\n      this.context.$implicit = nzStringTemplateOutlet.currentValue;\n    }\n\n    const recreateView = shouldRecreateView();\n    if (recreateView) {\n      /** recreate view when context shape or outlet change **/\n      this.recreateView();\n    } else {\n      /** update context **/\n      this.updateContext();\n    }\n  }\n}\n\nexport class NzStringTemplateOutletContext {\n  public $implicit: NzSafeAny;\n}\n\n@NgModule({\n  declarations: [StringTemplateOutletDirective],\n  exports: [StringTemplateOutletDirective]\n})\nexport class StringTemplateOutletDirectiveModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1207,7 +1111,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "createReducer(\r\n  initialState,\r\n  on(increment, (state) => state + 1),\r\n  on(decrement, (state) => state - 1),\r\n  on(reset, () => 0)\r\n)"
+                "defaultValue": "createReducer(\n  initialState,\n  on(increment, state => state + 1),\n  on(decrement, state => state - 1),\n  on(reset, () => 0)\n)"
             },
             {
                 "name": "context",
@@ -1247,7 +1151,9 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "defaultValue": "{\n  production: true\n}",
+                "rawdescription": "Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE",
+                "description": "<p>Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at <a href=\"https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\">https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE</a></p>\n"
             },
             {
                 "name": "environment",
@@ -1257,7 +1163,9 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  production: false\n}"
+                "defaultValue": "{\n  production: false\n}",
+                "rawdescription": "Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE",
+                "description": "<p>Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at <a href=\"https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\">https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE</a></p>\n"
             },
             {
                 "name": "increment",
@@ -1278,26 +1186,6 @@
                 "deprecationMessage": "",
                 "type": "number",
                 "defaultValue": "0"
-            },
-            {
-                "name": "LoggedIn",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "Primary",
@@ -1352,21 +1240,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args\r\n})"
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: args\n})"
             },
             {
                 "name": "Template",
@@ -1376,7 +1254,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ModalComponent>",
-                "defaultValue": "(args: ModalComponent) => ({\r\n  props: args,\r\n})"
+                "defaultValue": "(args: ModalComponent) => ({\n  props: args\n})"
             },
             {
                 "name": "Warning",
@@ -1412,6 +1290,7 @@
                         "deprecationMessage": ""
                     }
                 ],
+                "returnType": "number",
                 "jsdoctags": [
                     {
                         "name": "state",
@@ -1441,7 +1320,8 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "args": []
+                "args": [],
+                "returnType": "string"
             }
         ],
         "typealiases": [
@@ -1510,7 +1390,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "createReducer(\r\n  initialState,\r\n  on(increment, (state) => state + 1),\r\n  on(decrement, (state) => state - 1),\r\n  on(reset, () => 0)\r\n)"
+                    "defaultValue": "createReducer(\n  initialState,\n  on(increment, state => state + 1),\n  on(decrement, state => state - 1),\n  on(reset, () => 0)\n)"
                 },
                 {
                     "name": "initialState",
@@ -1583,7 +1463,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args\r\n})"
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: args\n})"
                 },
                 {
                     "name": "Warning",
@@ -1637,7 +1517,9 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
+                    "defaultValue": "{\n  production: true\n}",
+                    "rawdescription": "Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE",
+                    "description": "<p>Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at <a href=\"https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\">https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE</a></p>\n"
                 }
             ],
             "src/environments/environment.ts": [
@@ -1649,39 +1531,9 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
-                }
-            ],
-            "src/stories/Header.stories.ts": [
-                {
-                    "name": "LoggedIn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<Header>",
-                    "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                    "defaultValue": "{\n  production: false\n}",
+                    "rawdescription": "Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE",
+                    "description": "<p>Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at <a href=\"https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\">https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE</a></p>\n"
                 }
             ],
             "src/app/components/modal/modal.stories.ts": [
@@ -1703,7 +1555,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<ModalComponent>",
-                    "defaultValue": "(args: ModalComponent) => ({\r\n  props: args,\r\n})"
+                    "defaultValue": "(args: ModalComponent) => ({\n  props: args\n})"
                 }
             ]
         },
@@ -1731,6 +1583,7 @@
                             "deprecationMessage": ""
                         }
                     ],
+                    "returnType": "number",
                     "jsdoctags": [
                         {
                             "name": "state",
@@ -1762,7 +1615,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "args": []
+                    "args": [],
+                    "returnType": "string"
                 }
             ]
         },
@@ -1842,7 +1696,7 @@
         ]
     },
     "coverage": {
-        "count": 2,
+        "count": 10,
         "status": "low",
         "files": [
             {
@@ -1877,8 +1731,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 85,
-                "coverageCount": "6/7",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
                 "status": "very-good"
             },
             {
@@ -2063,9 +1917,9 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "environment",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "src/environments/environment.ts",
@@ -2073,57 +1927,9 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "environment",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/User.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "User",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "src/test.ts",
