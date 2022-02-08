@@ -15,6 +15,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Git config
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
       - run: npm ci
       - run: npm run release
 
