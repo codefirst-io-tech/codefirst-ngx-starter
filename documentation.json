@@ -372,7 +372,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-6e719488f3006ca6591accaa9c6d498ffd9e9aa765c3781c7fc052657108337d6992541fac351081ee164475eee4626653133c4199d8d1d8faf9a562cbb9975f",
+            "id": "component-AppComponent-bbe4ab859b6f6838ebdd2ccf4d92b4a6b0f2c526f75d76a08082caf854356d78cacfea77d3abf5989700aea7a5c4af90da39dc2fb2df05688c8eb5721134a252",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -392,48 +392,17 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "title",
-                    "defaultValue": "'codefirst-ngx-starter'",
+                    "name": "isCollapsed",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 14
                 }
             ],
-            "methodsClass": [
-                {
-                    "name": "onCancel",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 29,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "onOk",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 33,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "showModal",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 21,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -441,42 +410,16 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\nimport { ModalComponent } from './components/modal/modal.component';\nimport { ModalService } from './components/modal/modal.service';\n\n@Component({\n  selector: 'codefirst-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'codefirst-ngx-starter';\n\n  constructor(private modalService: ModalService) {}\n\n  showModal(): void {\n    const modalRef = this.modalService.show(ModalComponent);\n\n    modalRef.onOk.subscribe(() => {\n      console.log('OK');\n    });\n  }\n\n  onCancel(): void {\n    console.log('cancel');\n  }\n\n  onOk(): void {\n    console.log('ok');\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'codefirst-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  isCollapsed = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ":host {\n  display: flex;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.app-layout {\n  height: 100vh;\n}\n\n.menu-sidebar {\n  position: relative;\n  z-index: 10;\n  min-height: 100vh;\n  box-shadow: 2px 0 6px rgba(0,21,41,.35);\n}\n\n.header-trigger {\n  height: 64px;\n  padding: 20px 24px;\n  font-size: 20px;\n  cursor: pointer;\n  transition: all .3s,padding 0s;\n}\n\n.trigger:hover {\n  color: #1890ff;\n}\n\n.sidebar-logo {\n  position: relative;\n  height: 64px;\n  padding-left: 24px;\n  overflow: hidden;\n  line-height: 64px;\n  background: #001529;\n  transition: all .3s;\n}\n\n.sidebar-logo img {\n  display: inline-block;\n  height: 32px;\n  width: 32px;\n  vertical-align: middle;\n}\n\n.sidebar-logo h1 {\n  display: inline-block;\n  margin: 0 0 0 20px;\n  color: #fff;\n  font-weight: 600;\n  font-size: 14px;\n  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;\n  vertical-align: middle;\n}\n\nnz-header {\n  padding: 0;\n  width: 100%;\n  z-index: 2;\n}\n\n.app-header {\n  position: relative;\n  height: 64px;\n  padding: 0;\n  background: #fff;\n  box-shadow: 0 1px 4px rgba(0,21,41,.08);\n}\n\nnz-content {\n  margin: 24px;\n}\n\n.inner-content {\n  padding: 24px;\n  background: #fff;\n  height: 100%;\n}\n",
                     "styleUrl": "./app.component.scss"
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "modalService",
-                        "type": "ModalService",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 17,
-                "jsdoctags": [
-                    {
-                        "name": "modalService",
-                        "type": "ModalService",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "templateData": "<!--<immino-modal-->\n<!--  class=\"m-2\"-->\n<!--  title=\"armut modal\"-->\n<!--  width=\"500px\"-->\n<!--  (cancel)=\"onCancel()\"-->\n<!--  (ok)=\"onOk()\"-->\n<!--&gt;-->\n<!--</immino-modal>-->\n\n<div class=\"m-4\">\n  <codefirst-counter></codefirst-counter>\n</div>\n"
+            "templateData": "<nz-layout class=\"app-layout\">\n  <nz-sider\n    class=\"menu-sidebar\"\n    nzCollapsible\n    nzWidth=\"256px\"\n    nzBreakpoint=\"md\"\n    [(nzCollapsed)]=\"isCollapsed\"\n    [nzTrigger]=\"null\"\n  >\n    <div class=\"sidebar-logo\">\n      <a href=\"https://ng.ant.design/\" target=\"_blank\">\n        <img src=\"https://ng.ant.design/assets/img/logo.svg\" alt=\"logo\" />\n        <h1>Ant Design Of Angular</h1>\n      </a>\n    </div>\n    <ul nz-menu nzTheme=\"dark\" nzMode=\"inline\" [nzInlineCollapsed]=\"isCollapsed\">\n      <li nz-submenu nzOpen nzTitle=\"Dashboard\" nzIcon=\"dashboard\">\n        <ul>\n          <li nz-menu-item nzMatchRouter>\n            <a routerLink=\"/welcome\">Welcome</a>\n          </li>\n          <li nz-menu-item nzMatchRouter>\n            <a>Monitor</a>\n          </li>\n          <li nz-menu-item nzMatchRouter>\n            <a>Workplace</a>\n          </li>\n        </ul>\n      </li>\n      <li nz-submenu nzOpen nzTitle=\"Form\" nzIcon=\"form\">\n        <ul>\n          <li nz-menu-item nzMatchRouter>\n            <a>Basic Form</a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </nz-sider>\n  <nz-layout>\n    <nz-header>\n      <div class=\"app-header\">\n        <span class=\"header-trigger\" (click)=\"isCollapsed = !isCollapsed\">\n          <i class=\"trigger\" nz-icon [nzType]=\"isCollapsed ? 'menu-unfold' : 'menu-fold'\"></i>\n        </span>\n      </div>\n    </nz-header>\n    <nz-content>\n      <div class=\"inner-content\">\n        <router-outlet></router-outlet>\n      </div>\n    </nz-content>\n  </nz-layout>\n</nz-layout>\n"
         },
         {
             "name": "ButtonComponent",
@@ -833,18 +776,58 @@
             ],
             "stylesData": "",
             "templateData": "<div class=\"modal-mask\">\n  <div class=\"modal-outside-mask\"></div>\n  <div class=\"modal-wrapper\">\n    <div class=\"modal-container\" [ngStyle]=\"{ width: width }\">\n      <section class=\"modal-header\">\n        <p>{{ title }}</p>\n        <div class=\"modal-close-icon\" (click)=\"modalClose.emit($event)\"></div>\n      </section>\n\n      <div class=\"modal-body\">\n        <ng-container *ngIf=\"!bodyTemplate\">\n          <ng-content></ng-content>\n        </ng-container>\n\n        <ng-container *ngIf=\"bodyTemplate\">\n          <div *nzStringTemplateOutlet=\"bodyTemplate\">{{ bodyTemplate }}</div>\n        </ng-container>\n      </div>\n\n      <div class=\"modal-footer\">\n        <codefirst-button\n          class=\"mx-1\"\n          label=\"Cancel\"\n          [mode]=\"ButtonMode.Primary\"\n          (click)=\"cancel.emit($event)\"\n        ></codefirst-button>\n\n        <codefirst-button\n          class=\"mx-1\"\n          label=\"OK\"\n          [mode]=\"ButtonMode.Secondary\"\n          (click)=\"ok.emit($event)\"\n        ></codefirst-button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "WelcomeComponent",
+            "id": "component-WelcomeComponent-54845d4d6eb3471965cd35cf11fa136045221ac014d5428b6aee10d9f082183c2d05159e0be3cf8199c0054143da509435107b892a75448dee4a071a0992da05",
+            "file": "src/app/pages/welcome/welcome.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "codefirst-welcome",
+            "styleUrls": [
+                "./welcome.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./welcome.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'codefirst-welcome',\n  templateUrl: './welcome.component.html',\n  styleUrls: ['./welcome.component.scss']\n})\nexport class WelcomeComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./welcome.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": ""
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-27325c45a1415a5129bda332ea6c67c042879cc3c0100065bb92f57f2c9d25ce89bb5f9b5a6c4a685f36c499e5cf2edfcaa0147ded8c7bc26b72ac0425007152",
+            "id": "module-AppModule-bf04278e2ba9934c8b4867f7ddc3836c1fd044ae43aa071b3d0ca1690fd8cfc3b2038cc315e306b243a5c7aec32b46243f3f85bf7e9a3d087aa0574f05034fac",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\n\nimport { environment } from '../environments/environment';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { CounterComponentModule } from './components/counter/counter.component';\nimport { counterReducer } from './components/counter/counter.reducer';\nimport { ModalComponentModule } from './components/modal/modal.component';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    StoreModule.forRoot(\n      {\n        count: counterReducer\n      },\n      {}\n    ),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),\n    CounterComponentModule,\n    ModalComponentModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule {}\n",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { registerLocaleData } from '@angular/common';\nimport { HttpClientModule } from '@angular/common/http';\nimport en from '@angular/common/locales/en';\nimport { NgModule } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\n\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\n\nimport { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';\nimport { NzLayoutModule } from 'ng-zorro-antd/layout';\nimport { NzMenuModule } from 'ng-zorro-antd/menu';\n\nimport { environment } from '../environments/environment';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { CounterComponentModule } from './components/counter/counter.component';\nimport { counterReducer } from './components/counter/counter.reducer';\nimport { ModalComponentModule } from './components/modal/modal.component';\nimport { IconsProviderModule } from './icons-provider.module';\n\nregisterLocaleData(en);\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    StoreModule.forRoot(\n      {\n        count: counterReducer\n      },\n      {}\n    ),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),\n    CounterComponentModule,\n    ModalComponentModule,\n    FormsModule,\n    HttpClientModule,\n    BrowserAnimationsModule,\n    IconsProviderModule,\n    NzLayoutModule,\n    NzMenuModule\n  ],\n  providers: [{ provide: NZ_I18N, useValue: en_US }],\n  bootstrap: [AppComponent]\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -863,6 +846,9 @@
                     "elements": [
                         {
                             "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "IconsProviderModule"
                         }
                     ]
                 },
@@ -886,13 +872,13 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-19f9b93b406581c4eeba9376fbdda8417c0f9120be46945392e67eab7f7120b1cd9a3eb39a618425296417a896bb7b806ab3a2097d6e4e3ea5079ede7ba39406",
+            "id": "module-AppRoutingModule-8e31d536f44436c1110785a89956fe33e00d294ffd354c5cd8ce7cf891a498d6a251ef1461c4f32d8d8ee145b58c6e74b59a3dc72ed087921dd8d426e3fd0563",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule {}\n",
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\nimport { Routes, RouterModule } from '@angular/router';\n\nconst routes: Routes = [\n  { path: '', pathMatch: 'full', redirectTo: '/welcome' },\n  { path: 'welcome', loadChildren: () => \"import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)\" }\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1009,6 +995,42 @@
             ]
         },
         {
+            "name": "IconsProviderModule",
+            "id": "module-IconsProviderModule-e1a45a14ed63c779c5638b52a10ddc085f98cb70a8e0d473e17bdc1558c609fd4f89087df34930a9c0d92bde7b79aff35e8f7006414ca86d2015f30712637f1e",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/icons-provider.module.ts",
+            "methods": [],
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\n\nimport { MenuFoldOutline, MenuUnfoldOutline, FormOutline, DashboardOutline } from '@ant-design/icons-angular/icons';\n\nimport { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';\n\nconst icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];\n\n@NgModule({\n  imports: [NzIconModule],\n  exports: [NzIconModule],\n  providers: [{ provide: NZ_ICONS, useValue: icons }]\n})\nexport class IconsProviderModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "ModalComponentModule",
             "id": "module-ModalComponentModule-8b02ff00066685e5b2ccb43f09462ff6815e1d2631d55f9827eeac8451d5d88e3dfe32c9eadd5e185618c1b8737d39fc40f160f59589f836b96b56007a586a38",
             "description": "",
@@ -1099,6 +1121,90 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "WelcomeModule",
+            "id": "module-WelcomeModule-cabe27dcff6c5f1af89b23b7bcd4ba496fba9b0acf765674c6a1ff2854a7a39711c1a13f94b4ecd1f2d43ffc75ac31a3c3a4eba9e70e95d34c65cce8f1689836",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/pages/welcome/welcome.module.ts",
+            "methods": [],
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\n\nimport { WelcomeRoutingModule } from './welcome-routing.module';\nimport { WelcomeComponent } from './welcome.component';\n\n@NgModule({\n  imports: [WelcomeRoutingModule],\n  declarations: [WelcomeComponent],\n  exports: [WelcomeComponent]\n})\nexport class WelcomeModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "WelcomeComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "WelcomeRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "WelcomeComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "WelcomeRoutingModule",
+            "id": "module-WelcomeRoutingModule-58c3f667b2a4dcdbbe28a07b6669cfde48c98c5096b72a3c7779c20d62c6eae2156f901d8eaaf75fbb5a36ac65ba07b071175af59baf84a81cf2cdbca8f8ffb2",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/pages/welcome/welcome-routing.module.ts",
+            "methods": [],
+            "sourceCode": "/**\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\n */\n\nimport { NgModule } from '@angular/core';\nimport { Routes, RouterModule } from '@angular/router';\n\nimport { WelcomeComponent } from './welcome.component';\n\nconst routes: Routes = [{ path: '', component: WelcomeComponent }];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule]\n})\nexport class WelcomeRoutingModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
@@ -1166,6 +1272,16 @@
                 "defaultValue": "{\n  production: false\n}",
                 "rawdescription": "Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE",
                 "description": "<p>Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at <a href=\"https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\">https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE</a></p>\n"
+            },
+            {
+                "name": "icons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/icons-provider.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline]"
             },
             {
                 "name": "increment",
@@ -1536,6 +1652,18 @@
                     "description": "<p>Use of this source code is governed by an MIT-style license that can be\nfound in the LICENSE file at <a href=\"https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE\">https://github.com/omrumbakitemiz/codefirst-ngx-starter/blob/master/LICENSE</a></p>\n"
                 }
             ],
+            "src/app/icons-provider.module.ts": [
+                {
+                    "name": "icons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/icons-provider.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline]"
+                }
+            ],
             "src/app/components/modal/modal.stories.ts": [
                 {
                     "name": "Primary",
@@ -1690,7 +1818,37 @@
                 "name": "routes",
                 "filename": "src/app/app-routing.module.ts",
                 "module": "AppRoutingModule",
-                "children": [],
+                "children": [
+                    {
+                        "path": "",
+                        "pathMatch": "full",
+                        "redirectTo": "/welcome"
+                    },
+                    {
+                        "path": "welcome",
+                        "loadChildren": "./pages/welcome/welcome.module#WelcomeModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/pages/welcome/welcome-routing.module.ts",
+                                        "module": "WelcomeRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "WelcomeComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "WelcomeModule"
+                            }
+                        ]
+                    }
+                ],
                 "kind": "module"
             }
         ]
@@ -1705,7 +1863,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -1907,6 +2065,25 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/icons-provider.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "icons",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/welcome/welcome.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "WelcomeComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

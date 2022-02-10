@@ -6,10 +6,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'codefirst-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'codefirst-welcome',
+  templateUrl: './welcome.component.html',
+  styleUrls: ['./welcome.component.scss']
 })
-export class AppComponent {
-  isCollapsed = false;
-}
+export class WelcomeComponent {}
