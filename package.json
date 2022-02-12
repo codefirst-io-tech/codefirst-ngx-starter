@@ -13,12 +13,13 @@
     "format:check": "prettier --config ./.prettierrc.js --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
     "lint": "eslint --cache . --ext .ts,.html",
     "lint:fix": "eslint --fix --cache . --ext .ts,.html",
-    "prepare": "husky install",
     "commit": "cz",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
-    "push": "git push --follow-tags"
+    "push": "git push --follow-tags",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -90,6 +91,7 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "lint-staged": "^12.3.3",
     "prettier": "~2.5.1",
+    "puppeteer": "^13.3.1",
     "standard-version": "^9.3.2",
     "tailwindcss": "^3.0.19",
     "typescript": "^4.5.5"
