@@ -16,7 +16,7 @@ module.exports = {
       extends: [
         'plugin:@angular-eslint/recommended',
         'plugin:@angular-eslint/template/process-inline-templates',
-        'plugin:prettier/recommended',
+        'plugin:prettier/recommended'
       ],
       rules: {
         'prettier/prettier': ['error', prettierConfig],
@@ -160,7 +160,7 @@ module.exports = {
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [
           'warn',
-          { 'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_' }
+          { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }
         ]
       }
     },

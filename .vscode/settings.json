@@ -1,6 +1,6 @@
 {
-    "yaml.schemas": {
-        "file:///Users/omrumbakitemiz/.vscode/extensions/atlassian.atlascode-2.9.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
-        "https://json.schemastore.org/github-workflow.json": "file:///workspaces/codefirst-ngx-starter/.github/workflows/build.yml"
-    }
+  "yaml.schemas": {
+    "file:///Users/omrumbakitemiz/.vscode/extensions/atlassian.atlascode-2.9.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+    "https://json.schemastore.org/github-workflow.json": "file:///workspaces/codefirst-ngx-starter/.github/workflows/build.yml"
+  }
 }
