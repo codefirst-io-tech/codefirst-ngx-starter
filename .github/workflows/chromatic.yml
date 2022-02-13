@@ -6,10 +6,9 @@ name: 'Chromatic Publish'
 # Only trigger, when the build workflow succeeded
 on:
   workflow_run:
-    workflows: ["Test"]
+    workflows: ["CI build"]
     types:
       - completed
-
 
 # List of jobs
 jobs:
