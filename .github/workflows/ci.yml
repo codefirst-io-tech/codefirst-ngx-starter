@@ -93,6 +93,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - run: npm run release
+      - run: git remote -v
       - run: git push --follow-tags origin main
 
       - name: Release
