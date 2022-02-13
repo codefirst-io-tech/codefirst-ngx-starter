@@ -36,14 +36,7 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
-      - name: run linters
-        uses: samuelmeuli/lint-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint: true
-          prettier: true
-          auto_fix: true
-          commit_message: 'chore: lint'
+      - run: echo "Linting..."
 
   build:
     name: Build
