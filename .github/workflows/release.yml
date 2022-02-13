@@ -22,6 +22,7 @@ jobs:
 
       - run: npm ci
       - run: npm run release
+      - run: git push --follow-tags origin main
 
       - name: Release
         uses: fregante/release-with-changelog@v3
