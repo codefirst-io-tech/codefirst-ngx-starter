@@ -18,7 +18,6 @@
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
     "push": "git push --follow-tags",
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "prepare": "husky install"
   },
   "private": true,
