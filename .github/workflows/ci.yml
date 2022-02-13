@@ -73,10 +73,20 @@ jobs:
       - run: npm run test-headless
 
   release:
-    needs: test
+    name: Release
     runs-on: ubuntu-latest
+    needs: [ test ]
+
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 17
+      - uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
       - name: Git config
         run: |
           git config --local user.email "action@github.com"
