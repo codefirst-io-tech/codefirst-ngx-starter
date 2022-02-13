@@ -19,14 +19,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Run linters
-        uses: samuelmeuli/lint-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint: true
-          prettier: true
-          auto_fix: true
-
       - run: npm ci
       - run: npm run release
       - run: git push --follow-tags origin main
