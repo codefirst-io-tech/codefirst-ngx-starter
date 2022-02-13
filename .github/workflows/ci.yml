@@ -33,6 +33,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: run linters
         uses: samuelmeuli/lint-action@v1
         with:
@@ -46,6 +47,7 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: npm run build --if-present
 
   test:
@@ -58,6 +60,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Git config
         run: |
           git config --local user.email "action@github.com"
