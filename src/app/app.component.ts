@@ -22,7 +22,7 @@ export class AppComponent {
     const modalRef = this.modalService.show(ModalComponent);
 
     modalRef.onOk.subscribe(() => {
-      console.log('OK')
+      console.log('OK');
     });
   }
 
