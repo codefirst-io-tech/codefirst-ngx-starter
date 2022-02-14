@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.4.8 (2022-02-14)
+
+
+### Bug Fixes
+
+* **chromatic:** github action fix for chromatic ([fc0dc69](https://github.com/codefirst-io-tech/codefirst-ngx-starter/commit/fc0dc691f2f5bd8fe18aef4ef8828d2568810249))
+
 ### 1.4.7 (2022-02-14)
 
 ### 1.4.6 (2022-02-13)
