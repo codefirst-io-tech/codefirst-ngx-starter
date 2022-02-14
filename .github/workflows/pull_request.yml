@@ -1,8 +1,9 @@
-name: 'CI Build'
+name: 'CI Build without Release'
 
 on:
-  push:
-    branches: [ main ]
+  pull_request:
+    branches:
+      - main
 
 jobs:
   cache-deps:
@@ -36,7 +37,7 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
-      - run: echo "Linting..."
+      - run: npm run lint
 
   build:
     name: Build
@@ -71,42 +72,3 @@ jobs:
           path: ./*
           key: ${{ github.sha }}
       - run: npm run test-headless
-
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    needs: [ test ]
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Git config
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-
-      - run: npm ci
-      - run: npm run release
-      - run: git push --follow-tags origin main
-
-      - name: Release
-        uses: fregante/release-with-changelog@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-  chromatic:
-    name: Chromatic Release
-    runs-on: ubuntu-latest
-    needs: [ test ]
-
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm ci
-        #👇 Adds Chromatic as a step in the workflow
-      - uses: chromaui/action@v1
-        # Options required for Chromatic's GitHub Action
-        with:
-          #👇 Chromatic projectToken,
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
